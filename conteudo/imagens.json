@@ -1,0 +1,171 @@
+{
+ "02": [
+  {
+   "arquivo": "img/chinese-suanpan-abacus.jpg",
+   "autor": "Felix Winkelnkemper",
+   "licenca": "CC BY-SA 4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Chinese_Suanpan_Abacus.jpg",
+   "legenda": "Ábaco chinês (suanpan)"
+  },
+  {
+   "arquivo": "img/antikythera-fragment-a-front.webp",
+   "autor": "Logg Tandy",
+   "licenca": "CC BY 4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Antikythera_Fragment_A_(Front).webp",
+   "legenda": "Mecanismo de Anticítera, fragmento A"
+  },
+  {
+   "arquivo": "img/machine-a-calculer-blaise-pascale-1642-mus-e-des-arts-et-m-t.jpg",
+   "autor": "Tieum512",
+   "licenca": "CC BY 3.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Machine_a_Calculer_Blaise_Pascale_1642_-_Mus%C3%A9e_des_arts_et_m%C3%A9tiers.jpg",
+   "legenda": "Pascalina, de Blaise Pascal"
+  },
+  {
+   "arquivo": "img/charles-babbage-difference-engine-no1.jpg",
+   "autor": "Marcin Wichary",
+   "licenca": "CC BY 2.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Charles_Babbage_Difference_Engine_No1.jpg",
+   "legenda": "Máquina Diferencial de Charles Babbage"
+  },
+  {
+   "arquivo": "img/ada-lovelace-portrait.jpg",
+   "autor": "Alfred Edward Chalon",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Ada_Lovelace_portrait.jpg",
+   "legenda": "Ada Lovelace, a primeira programadora"
+  },
+  {
+   "arquivo": "img/harvard-mark-i-computer-left-segment.jpg",
+   "autor": "Original uploader was Daderot at en.wikipedia",
+   "licenca": "CC BY-SA 3.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Harvard_Mark_I_Computer_-_Left_Segment.jpg",
+   "legenda": "Harvard Mark I (1944)"
+  },
+  {
+   "arquivo": "img/replica-of-first-transistor.jpg",
+   "autor": "Federal employee",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Replica-of-first-transistor.jpg",
+   "legenda": "Réplica do primeiro transistor (Bell Labs, 1947)"
+  },
+  {
+   "arquivo": "img/c4004-intel.jpg",
+   "autor": "Photo by John Pilge.",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:C4004_(Intel).jpg",
+   "legenda": "Intel 4004, o primeiro microprocessador comercial (1971)"
+  },
+  {
+   "arquivo": "img/ibm-pc-5150.jpg",
+   "autor": "Jordiferrer",
+   "licenca": "CC BY-SA 3.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:IBM_PC-5150.JPG",
+   "legenda": "IBM PC 5150 (1981)"
+  }
+ ],
+ "03": [
+  {
+   "arquivo": "img/glen-beck-and-betty-snyder-program-the-eniac-in-building-328.jpg",
+   "autor": "Unknown authorUnknown author",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Glen_Beck_and_Betty_Snyder_program_the_ENIAC_in_building_328_at_the_Ballistic_Research_Laboratory.jpg",
+   "legenda": "Glen Beck e Betty Snyder programando o ENIAC"
+  },
+  {
+   "arquivo": "img/eniac-cropped.jpg",
+   "autor": "Unknown authorUnknown author",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Eniac_(cropped).jpg",
+   "legenda": "O ENIAC"
+  }
+ ],
+ "07": [
+  {
+   "arquivo": "img/arpanet-logical-map-march-1977.png",
+   "autor": "ARPANET",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Arpanet_logical_map,_march_1977.png",
+   "legenda": "Mapa lógico da ARPANET, março de 1977"
+  }
+ ],
+ "16": [
+  {
+   "arquivo": "img/remington-no-1-typewriter-made-by-remington-songs-ilion-ny-1.jpg",
+   "autor": "Daderot",
+   "licenca": "CC0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Remington_No._1_typewriter,_made_by_Remington_%26_Songs,_Ilion,_NY,_1873-1878,_the_first_Sholes_%26_Glidden_model_typewriter_made_by_Remington_-_Wisconsin_Historical_Museum_-_DSC02806.JPG",
+   "legenda": "Sholes & Glidden / Remington nº 1, a primeira máquina QWERTY"
+  },
+  {
+   "arquivo": "img/kb-portuguese-brazil-abnt2.png",
+   "autor": "Cpolvilho",
+   "licenca": "CC BY-SA 4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:KB_Portuguese_Brazil_ABNT2.svg",
+   "legenda": "Layout de teclado ABNT2"
+  }
+ ],
+ "18": [
+  {
+   "arquivo": "img/asus-rog-strix-z390-f-gaming-motherboard-20201120-dsc6025.jpg",
+   "autor": "PantheraLeo1359531",
+   "licenca": "CC BY 4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Asus-ROG-Strix-Z390-F-Gaming-Motherboard_20201120_DSC6025.jpg",
+   "legenda": "Placa-mãe ATX"
+  }
+ ],
+ "19": [
+  {
+   "arquivo": "img/amd-ryzen-9-9950x.jpg",
+   "autor": "4300streetcar",
+   "licenca": "CC BY 4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:AMD_Ryzen_9_9950X.jpg",
+   "legenda": "Processador AMD Ryzen 9 9950X"
+  }
+ ],
+ "22": [
+  {
+   "arquivo": "img/desktop-ddr-memory-comparison.png",
+   "autor": "Martini",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Desktop_DDR_Memory_Comparison.svg",
+   "legenda": "Comparação dos módulos DDR de desktop: repare no chanfro em posições diferentes"
+  }
+ ],
+ "23": [
+  {
+   "arquivo": "img/asus-c501ps-nvidia-geforce-7600-graphics-card-1.jpg",
+   "autor": "MKFI",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Asus_C501PS_Nvidia_Geforce_7600_graphics_card_1.JPG",
+   "legenda": "Placa de vídeo dedicada"
+  }
+ ],
+ "25": [
+  {
+   "arquivo": "img/atx-computer-power-supply-unit.jpg",
+   "autor": "Dmitry Makeev",
+   "licenca": "CC BY-SA 4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:ATX_Computer_power_supply_unit.jpg",
+   "legenda": "Fonte de alimentação ATX"
+  }
+ ],
+ "27": [
+  {
+   "arquivo": "img/laptop-hard-drive-exposed.jpg",
+   "autor": "Evan-Amos",
+   "licenca": "CC BY-SA 3.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Laptop-hard-drive-exposed.jpg",
+   "legenda": "Interior de um HD: prato e braço com a cabeça de leitura"
+  }
+ ],
+ "28": [
+  {
+   "arquivo": "img/samsung-nvme-m-2-970-evo-plus-18540.jpg",
+   "autor": "Michael Wolf (Webseite)",
+   "licenca": "CC BY-SA 3.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Samsung_NVMe_M.2_970_EVO_Plus_18540.jpg",
+   "legenda": "SSD M.2 NVMe"
+  }
+ ]
+}

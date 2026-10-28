@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Masterclass de Hardware — Apresentação</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=IBM+Plex+Sans:wght@400;600;700&family=IBM+Plex+Mono:wght@600;700&display=swap" rel="stylesheet">
+<style>
+/* ===========================================
+   FIXED 16:9 STAGE: MANDATORY BASE STYLES
+   Include this ENTIRE file in every presentation.
+   Slides are authored at 1920×1080 and scaled as a whole.
+   =========================================== */
+
+/* 1. Lock the browser viewport */
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    background: var(--stage-bg, #000);
+}
+
+/* 2. Full-window deck viewport */
+.deck-viewport {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    background: var(--stage-bg, #000);
+}
+
+/* 3. Fixed 16:9 design canvas.
+   JavaScript sets transform: translate(...) scale(...). */
+.deck-stage {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    transform-origin: 0 0;
+    background: var(--slide-bg, #fff);
+}
+
+/* 4. Slides stack inside the fixed stage.
+   Content must be laid out at 1920×1080, not reflowed per device. */
+.slide {
+    position: absolute;
+    inset: 0;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    background: var(--slide-bg, #fff);
+}
+
+.slide.active,
+.slide.visible {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 1;
+}
+
+/* 5. Keep media inside authored slide bounds */
+img,
+video,
+canvas,
+svg {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* 6. Presentation chrome stays outside the slide design system */
+.deck-controls {
+    position: fixed;
+    left: 50%;
+    bottom: 22px;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+/* 7. Print one fixed-size slide per page */
+@media print {
+    html,
+    body {
+        width: 1920px;
+        height: auto;
+        overflow: visible;
+        background: #fff;
+    }
+
+    .deck-viewport {
+        position: static;
+        overflow: visible;
+        background: #fff;
+    }
+
+    .deck-stage {
+        position: static;
+        width: auto;
+        height: auto;
+        transform: none !important;
+        background: none;
+    }
+
+    .slide {
+        position: relative;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        width: 1920px;
+        height: 1080px;
+        break-after: page;
+        page-break-after: always;
+    }
+
+    .slide:last-child {
+        break-after: auto;
+        page-break-after: auto;
+    }
+
+    .deck-controls {
+        display: none !important;
+    }
+}
+
+/* 8. Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.2s !important;
+    }
+}
+
+@page{size:1920px 1080px;margin:0}
+
+/* === TOKENS === */
+:root{--stage-bg:#0B0C0E;--slide-bg:#F5F3EE;--tinta:#16181C;--tinta-2:#4A4F57;--cobre:#B4531F;--cobre-c:#E58A52;--pcb:#0F5A43;--linha:#D9D3C7;--papel-2:#ECE8DF}
+/* === BASE === */
+.slide{font-family:'IBM Plex Sans',sans-serif;color:var(--tinta)}
+.escuro{background:#16181C;color:#F5F3EE}
+.grade{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 120px,rgba(255,255,255,.045) 120px 121px),repeating-linear-gradient(90deg,transparent 0 120px,rgba(255,255,255,.045) 120px 121px)}
+.grade::after{content:"";position:absolute;top:0;bottom:0;left:1640px;width:6px;background:var(--cobre)}
+/* === CAPA / FIM === */
+.capa-c{position:absolute;left:140px;top:190px;width:1440px}
+.kick{font:600 26px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--cobre-c);margin:0 0 48px}
+.capa h1{font:900 176px/.92 'Archivo',sans-serif;letter-spacing:-.04em;margin:0 0 48px}
+.capa .sub{font-size:38px;line-height:1.35;color:#CFCBC2;margin:0;max-width:880px}
+.capa-r{position:absolute;left:140px;right:140px;bottom:96px;border-top:3px solid var(--cobre-c);padding-top:28px;display:flex;justify-content:space-between;font:600 26px 'IBM Plex Mono',monospace;color:#CFCBC2}
+.fim h1{font-size:200px}
+.fim .nota{font-size:28px;color:#9A9EA6;margin-top:60px;max-width:900px;line-height:1.4}
+/* === SEÇÃO === */
+.secao .sec-n{position:absolute;left:140px;top:120px;font:900 360px/1 'Archivo',sans-serif;color:var(--cobre);margin:0;letter-spacing:-.04em}
+.sec-c{position:absolute;left:140px;bottom:150px;width:1440px}
+.secao h2{font:900 140px/.95 'Archivo',sans-serif;letter-spacing:-.035em;margin:0 0 28px}
+.secao p{font-size:38px;color:#CFCBC2;margin:0}
+/* === CHROME === */
+.sl-top{position:absolute;left:120px;right:120px;top:64px;display:flex;justify-content:space-between;font:600 22px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.07em;color:var(--cobre)}
+.sl-deck{color:#8A8F97}
+.sl-num{position:absolute;right:120px;bottom:56px;font:600 22px 'IBM Plex Mono',monospace;color:var(--tinta)}
+.sl-num i{font-style:normal;color:#8A8F97}
+.sl-num.claro{color:#F5F3EE}
+.sl-c{position:absolute;left:120px;right:120px;top:130px;bottom:120px;display:flex;flex-direction:column}
+.titulo{font:900 84px/1 'Archivo',sans-serif;letter-spacing:-.03em;margin:0 0 56px;padding-bottom:28px;border-bottom:5px solid var(--tinta);max-width:1500px}
+.rodape{margin:auto 0 0;padding-top:28px;font-size:31px;line-height:1.4;color:var(--tinta-2);max-width:1560px}
+/* === CARDS === */
+.cards{display:grid;gap:28px;flex:1;grid-auto-rows:1fr;align-content:stretch}
+.cards.c3{grid-template-columns:repeat(3,1fr)}
+.cards.c5{grid-template-columns:repeat(5,1fr)}
+.card{background:#fff;border:2px solid var(--linha);border-radius:18px;padding:36px 38px;display:flex;flex-direction:column;gap:14px}
+.c-k{font:700 26px 'IBM Plex Mono',monospace;color:var(--cobre)}
+.card b{font:800 46px/1.1 'Archivo',sans-serif;letter-spacing:-.01em}
+.card p{margin:0;font-size:31px;line-height:1.38;color:var(--tinta-2)}
+.cards.n3 .card{padding:48px}.cards.n3 .card b{font-size:60px}.cards.n3 .card p{font-size:36px}
+.cards.n10 .card b{font-size:38px}.cards.n10 .c-k{font-size:44px;font-family:'Archivo',sans-serif;font-weight:900}
+.cards.n9{gap:20px}.cards.n9 .card b{font-size:36px}.cards.n9 .card{padding:18px 30px;gap:6px}.cards.n9 .card p{font-size:26px}.cards.n9 .c-k{font-size:22px}
+/* === DUAS COLUNAS === */
+.duas{display:grid;grid-template-columns:1fr 1fr;gap:40px;flex:1}
+.duas.com-img{grid-template-columns:1fr 1fr 520px}
+.col{border-radius:20px;padding:44px 48px;background:#fff;border:2px solid var(--linha)}
+.col.cb{background:#16181C;color:#F5F3EE;border-color:#16181C}
+.col h3{font:900 60px/1 'Archivo',sans-serif;margin:0 0 18px;letter-spacing:-.02em}
+.col.ca h3{color:var(--pcb)}.col.cb h3{color:var(--cobre-c)}
+.col .lead{font-size:36px;line-height:1.35;font-weight:600;margin:0 0 26px}
+.col ul{list-style:none;margin:0;padding:0}
+.col li{font-size:33px;line-height:1.38;padding:22px 0 22px 38px;border-top:2px solid var(--linha);position:relative}
+.col.cb li{border-color:#33373D;color:#D7D3CB}
+.col li::before{content:"";position:absolute;left:0;top:38px;width:14px;height:14px;border-radius:3px;background:var(--cobre)}
+.duas-img{margin:0;border-radius:20px;overflow:hidden;border:2px solid var(--linha)}
+.duas-img img{width:100%;height:100%;object-fit:cover;max-height:none}
+/* === TABELA === */
+.tab{width:100%;border-collapse:collapse;font-size:32px;line-height:1.3}
+.tab th{background:#16181C;color:#F5F3EE;text-align:left;padding:24px 28px;font:700 23px 'IBM Plex Sans',sans-serif;text-transform:uppercase;letter-spacing:.05em}
+.tab td{padding:24px 28px;border-bottom:2px solid var(--linha);background:#fff}
+.tab tbody tr:nth-child(even) td{background:#FAF8F4}
+.tab td:first-child{font-weight:700}
+/* === NÚMEROS === */
+.nums{display:grid;gap:24px;flex:1;align-content:center}
+.nums.n3{grid-template-columns:repeat(3,1fr)}.nums.n4{grid-template-columns:repeat(4,1fr)}.nums.n5{grid-template-columns:repeat(5,1fr)}
+.nums.com-img{grid-template-columns:1fr 1fr;width:880px;align-content:start}
+.num{border-top:6px solid var(--cobre);padding-top:26px}
+.num b{display:block;font:900 92px/1 'Archivo',sans-serif;letter-spacing:-.035em}
+.nums.n5 .num b{font-size:76px}.nums.com-img .num b{font-size:70px}
+.nums.n3 .num b{font-size:94px}
+.num span{display:block;font-size:34px;color:var(--tinta-2);margin-top:14px}
+.num-img{position:absolute;right:0;top:170px;width:700px;margin:0}
+.num-img img{width:700px;height:430px;object-fit:cover;border-radius:18px;max-height:none;display:block}
+.num-img figcaption{font-size:18px;color:#8A8F97;margin-top:10px}
+.t-numeros .rodape{max-width:900px}
+/* === LINHA DO TEMPO === */
+.linha{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:1fr 1fr;gap:56px 36px;position:relative;flex:1}
+.linha li{border-left:5px solid var(--cobre);padding:0 0 0 24px}
+.l-a{font:700 30px 'IBM Plex Mono',monospace;color:var(--cobre)}
+.linha b{display:block;font:800 48px/1.1 'Archivo',sans-serif;margin:14px 0 10px}
+.linha p{margin:0;font-size:31px;line-height:1.35;color:var(--tinta-2)}
+/* === FLUXO === */
+.fluxo{display:grid;grid-template-columns:repeat(3,1fr);gap:0;flex:1;align-content:center}
+.passo{padding:52px 56px;border:2px solid var(--tinta);background:#fff;position:relative;min-height:380px}
+.passo+.passo{border-left:0}
+.passo:nth-child(2){background:#16181C;color:#F5F3EE}
+.passo:nth-child(2) p{color:#CFCBC2}
+.p-n{font:700 30px 'IBM Plex Mono',monospace;color:var(--cobre)}
+.passo b{display:block;font:900 66px/1.05 'Archivo',sans-serif;margin:30px 0 18px;letter-spacing:-.02em}
+.passo p{margin:0;font-size:36px;line-height:1.38;color:var(--tinta-2)}
+/* === ANIMAÇÃO === */
+.slide .anim{opacity:0;transform:translateY(24px);transition:opacity .55s cubic-bezier(.2,.7,.2,1),transform .55s cubic-bezier(.2,.7,.2,1)}
+.slide.visible .anim{opacity:1;transform:none}
+.slide.visible .d1{transition-delay:.08s}.slide.visible .d2{transition-delay:.16s}.slide.visible .d3{transition-delay:.24s}.slide.visible .d4{transition-delay:.32s}.slide.visible .d5{transition-delay:.4s}
+@media print{.slide .anim{opacity:1!important;transform:none!important}}
+/* === CONTROLES (fora do palco) === */
+.deck-controls{display:flex;gap:10px;align-items:center;font:600 14px 'IBM Plex Mono',monospace;color:#CFCBC2;background:rgba(22,24,28,.82);padding:8px 10px;border-radius:12px;opacity:.0;transition:opacity .25s}
+body:hover .deck-controls,.deck-controls:focus-within{opacity:1}
+.deck-controls button{background:#2A2D33;color:#F5F3EE;border:0;border-radius:8px;width:38px;height:34px;font:inherit;font-size:18px;cursor:pointer}
+.barra-prog{position:fixed;left:0;top:0;height:4px;background:#B4531F;z-index:1001;transition:width .3s}
+[contenteditable="true"]{outline:2px dashed #E58A52;outline-offset:4px}
+
+</style></head><body>
+<div class="barra-prog" id="prog"></div>
+<div class="deck-viewport"><main class="deck-stage" id="deckStage">
+<section class="slide escuro capa"><div class="grade"></div><div class="capa-c"><p data-ed="t1" class="kick">Masterclass completa · TI · Hardware</p><h1 data-ed="t2" class="anim">Masterclass de Hardware</h1><p data-ed="t3" class="sub anim d1">Do ábaco à computação quântica: história, fundamentos e cada componente do computador</p></div><div class="capa-r anim d2"><span>Apostila · HTML interativo · Apresentação</span><span>Outubro de 2026</span></div></section><section class="slide claro-bg t-cards"><div class="sl-top"><span>Roteiro</span><span class="sl-deck">Masterclass de Hardware</span></div><div class="sl-num">02<i>/49</i></div><div class="sl-c"><h2 data-ed="t4" class="titulo anim">Nove partes, do porquê ao como</h2><div class="cards c3 n9"><div class="card anim d0"><span class="c-k">I</span><b data-ed="t5">Fundamentos</b><p data-ed="t6">Computar, hardware e software</p></div><div class="card anim d1"><span class="c-k">II</span><b data-ed="t7">História</b><p data-ed="t8">Do ábaco ao ENIAC, Von Neumann</p></div><div class="card anim d2"><span class="c-k">III</span><b data-ed="t9">Internet</b><p data-ed="t10">ARPANET, Web e o Brasil</p></div><div class="card anim d3"><span class="c-k">IV</span><b data-ed="t11">Linguagem</b><p data-ed="t12">Bits, bytes, hertz, ASCII</p></div><div class="card anim d4"><span class="c-k">V</span><b data-ed="t13">Bancada segura</b><p data-ed="t14">Elétrica, estática, oxidação</p></div><div class="card anim d5"><span class="c-k">VI–VII</span><b data-ed="t15">Componentes</b><p data-ed="t16">Cada peça, ficha completa</p></div><div class="card anim d5"><span class="c-k">VIII</span><b data-ed="t17">Prática</b><p data-ed="t18">Compatibilidade, montagem, manutenção</p></div><div class="card anim d5"><span class="c-k">IX</span><b data-ed="t19">Fronteira</b><p data-ed="t20">Quântica e IA</p></div><div class="card anim d5"><span class="c-k">+</span><b data-ed="t21">Fechamento</b><p data-ed="t22">Resumo e versão para crianças</p></div></div></div></section><section class="slide escuro secao"><div class="grade"></div><p data-ed="t23" class="sec-n anim">I</p><div class="sec-c"><h2 data-ed="t24" class="anim d1">Fundamentos</h2><p data-ed="t25" class="anim d2">O vocabulário que organiza todo o resto</p></div><div class="sl-num claro">03<i>/49</i></div></section><section class="slide claro-bg t-fluxo"><div class="sl-top"><span>Fundamentos</span><span class="sl-deck">Masterclass de Hardware</span></div><div class="sl-num">04<i>/49</i></div><div class="sl-c"><h2 data-ed="t26" class="titulo anim">Todo computador faz a mesma coisa</h2><div class="fluxo"><div class="passo anim d0"><span class="p-n">01</span><b data-ed="t27">Entrada</b><p data-ed="t28">Teclado, mouse, câmera, rede</p></div><div class="passo anim d1"><span class="p-n">02</span><b data-ed="t29">Processamento</b><p data-ed="t30">CPU e GPU transformam os dados</p></div><div class="passo anim d2"><span class="p-n">03</span><b data-ed="t31">Saída</b><p data-ed="t32">Monitor, som, impressora, rede</p></div></div><p data-ed="t33" class="rodape anim d3">O armazenamento (RAM, SSD, HD) guarda dados e resultados em cada etapa. É o ciclo IPO.</p></div></section><section class="slide claro-bg t-duas"><div class="sl-top"><span>Fundamentos</span><span class="sl-deck">Masterclass de Hardware</span></div><div class="sl-num">05<i>/49</i></div><div class="sl-c"><h2 data-ed="t34" class="titulo anim">Hardware × software</h2><div class="duas"><div class="col ca anim"><h3 data-ed="t35">Hardware</h3><p data-ed="t36" class="lead">A parte física, o que se toca</p><ul><li data-ed="t37">Processador, memória, placa-mãe</li><li data-ed="t38">Teclado, cabos, fonte</li></ul></div><div class="col cb anim"><h3 data-ed="t39">Software</h3><p data-ed="t40" class="lead">As instruções que dizem o que fazer</p><ul><li data-ed="t41">Sistema operacional, drivers, apps</li><li data-ed="t42">Firmware: software gravado no hardware (BIOS/UEFI)</li></ul></div></div></div></section><section class="slide escuro secao"><div class="grade"></div><p data-ed="t43" class="sec-n anim">II</p><div class="sec-c"><h2 data-ed="t44" class="anim d1">História</h2><p data-ed="t45" class="anim d2">Contar mais rápido, com menos erro e menos esforço</p></div><div class="sl-num claro">06<i>/49</i></div></section><section class="slide claro-bg t-linha"><div class="sl-top"><span>História da computação</span><span class="sl-deck">Masterclass de Hardware</span></div><div class="sl-num">07<i>/49</i></div><div class="sl-c"><h2 data-ed="t46" class="titulo anim">Do ábaco à IA em oito saltos</h2><ol class="linha"><li data-ed="t47" class="anim d0"><span class="l-a">c. 2700 a.C.</span><b data-ed="t48">Ábaco</b><p data-ed="t49">Valor posicional</p></li><li data-ed="t50" class="anim d0"><span class="l-a">1642</span><b data-ed="t51">Pascalina</b><p data-ed="t52">Engrenagens que somam</p></li><li data-ed="t53" class="anim d1"><span class="l-a">1804</span><b data-ed="t54">Jacquard</b><p data-ed="t55">Cartões perfurados = programa</p></li><li data-ed="t56" class="anim d1"><span class="l-a">1843</span><b data-ed="t57">Ada Lovelace</b><p data-ed="t58">Primeiro programa publicado</p></li><li data-ed="t59" class="anim d2"><span class="l-a">1946</span><b data-ed="t60">ENIAC</b><p data-ed="t61">Eletrônico e de propósito geral</p></li><li data-ed="t62" class="anim d2"><span class="l-a">1947</span><b data-ed="t63">Transistor</b><p data-ed="t64">O liga/desliga minúsculo</p></li><li data-ed="t65" class="anim d3"><span class="l-a">1971</span><b data-ed="t66">Intel 4004</b><p data-ed="t67">CPU num chip</p></li><li data-ed="t68" class="anim d3"><span class="l-a">2022</span><b data-ed="t69">IA generativa</b><p data-ed="t70">GPUs e Transformers</p></li></ol></div></section><section class="slide claro-bg t-cards"><div class="sl-top"><span>Pioneiros</span><span class="sl-deck">Masterclass de Hardware</span></div><div class="sl-num">08<i>/49</i></div><div class="sl-c"><h2 data-ed="t71" class="titulo anim">Nomes que você precisa conhecer</h2><div class="cards c3 n6"><div class="card anim d0"><span class="c-k">1837</span><b data-ed="t72">Charles Babbage</b><p data-ed="t73">Máquina Analítica: CPU, memória, E/S</p></div><div class="card anim d1"><span class="c-k">1843</span><b data-ed="t74">Ada Lovelace</b><p data-ed="t75">Primeira programadora</p></div><div class="card anim d2"><span class="c-k">1854</span><b data-ed="t76">George Boole</b><p data-ed="t77">Lógica de verdadeiro e falso</p></div><div class="card anim d3"><span class="c-k">1936</span><b data-ed="t78">Alan Turing</b><p data-ed="t79">A máquina universal</p></div><div class="card anim d4"><span class="c-k">1937</span><b data-ed="t80">Claude Shannon</b><p data-ed="t81">Boole em circuitos elétricos</p></div><div class="card anim d5"><span class="c-k">1945</span><b data-ed="t82">John von Neumann</b><p data-ed="t83">Programa armazenado</p></div></div></div></section><section class="slide claro-bg t-numeros"><div class="sl-top"><span>ENIAC · 1946</span><span class="sl-deck">Masterclass de Hardware</span></div><div class="sl-num">09<i>/49</i></div><div class="sl-c"><h2 data-ed="t84" class="titulo anim">O gigante de 27 toneladas</h2><div class="nums n5 com-img"><div class="num anim d0"><b data-ed="t85">17.468</b><span>válvulas</span></div><div class="num anim d1"><b data-ed="t86">≈ 27 t</b><span>de peso</span></div><div class="num anim d2"><b data-ed="t87">≈ 167 m²</b><span>de área</span></div><div class="num anim d3"><b data-ed="t88">≈ 150 kW</b><span>de consumo</span></div><div class="num anim d4"><b data-ed="t89">5.000</b><span>somas por segundo</span></div></div><figure class="num-img anim d2"><img src="assets/glen-beck-and-betty-snyder-program-the-eniac-in-building-328.jpg" alt=""><figcaption>Glen Beck e Betty Snyder programando o ENIAC · Domínio público, Wikimedia Commons</figcaption></figure><p data-ed="t90" class="rodape anim d3">Programado religando cabos, por seis programadoras pioneiras.</p></div></section><section class="slide claro-bg t-tabela"><div class="sl-top"><span>O debate</span><span class="sl-deck">Masterclass de Hardware</span></div><div class="sl-num">10<i>/49</i></div><div class="sl-c"><h2 data-ed="t91" class="titulo anim">Qual foi o primeiro computador?</h2><table class="tab anim"><thead><tr><th data-ed="t92">Máquina</th><th data-ed="t93">Ano</th><th data-ed="t94">O que foi primeiro</th></tr></thead><tbody><tr><td data-ed="t95">Z3 (Zuse)</td><td data-ed="t96">1941</td><td data-ed="t97">Programável e automático funcional (relés)</td></tr><tr><td data-ed="t98">ABC (Atanasoff-Berry)</td><td data-ed="t99">1942</td><td data-ed="t100">Eletrônico digital (não programável)</td></tr><tr><td data-ed="t101">ENIAC</td><td data-ed="t102">1945/46</td><td data-ed="t103">Eletrônico, digital, programável e de propósito geral</td></tr><tr><td data-ed="t104">Manchester Baby</td><td data-ed="t105">1948</td><td data-ed="t106">Programa armazenado na memória</td></tr><tr><td data-ed="t107">UNIVAC I</td><td data-ed="t108">1951</td><td data-ed="t109">Comercial de sucesso nos EUA</td></tr></tbody></table><p data-ed="t110" class="rodape anim d3">Resposta de prova: o ENIAC é o primeiro computador eletrônico digital de propósito geral.</p></div></section><section class="slide claro-bg t-tabela"><div class="sl-top"><span>Evolução</span><span class="sl-deck">Masterclass de Hardware</span></div><div class="sl-num">11<i>/49</i></div><div class="sl-c"><h2 data-ed="t111" class="titulo anim">As gerações do computador</h2><table class="tab anim"><thead><tr><th data-ed="t112">Geração</th><th data-ed="t113">Período</th><th data-ed="t114">Tecnologia</th><th data-ed="t115">Exemplo</th></tr></thead><tbody><tr><td data-ed="t116">1ª</td><td data-ed="t117">1946–1958</td><td data-ed="t118">Válvulas</td><td data-ed="t119">ENIAC, UNIVAC</td></tr><tr><td data-ed="t120">2ª</td><td data-ed="t121">1958–1964</td><td data-ed="t122">Transistores</td><td data-ed="t123">IBM 1401</td></tr><tr><td data-ed="t124">3ª</td><td data-ed="t125">1964–1971</td><td data-ed="t126">Circuitos integrados</td><td data-ed="t127">IBM System/360</td></tr><tr><td data-ed="t128">4ª</td><td data-ed="t129">1971–hoje</td><td data-ed="t130">Microprocessadores</td><td data-ed="t131">IBM PC, smartphones</td></tr><tr><td data-ed="t132">5ª</td><td data-ed="t133">1980s–hoje</td><td data-ed="t134">Paralelismo e IA</td><td data-ed="t135">GPUs, supercomputadores</td></tr><tr><td data-ed="t136">Fronteira</td><td data-ed="t137">2019–</td><td data-ed="t138">Qubits</td><td data-ed="t139">Google Willow</td></tr></tbody></table></div></section><section class="slide claro-bg t-numeros"><div class="sl-top"><span>Lei de Moore</span><span class="sl-deck">Masterclass de Hardware</span></div><div class="sl-num">12<i>/49</i></div><div class="sl-c"><h2 data-ed="t140" class="titulo anim">Transistores dobram a cada ≈ 2 anos</h2><div class="nums n4"><div class="num anim d0"><b data-ed="t141">2.300</b><span>Intel 4004 · 1971</span></div><div class="num anim d1"><b data-ed="t142">3,1 mi</b><span>Pentium · 1993</span></div><div class="num anim d2"><b data-ed="t143">16 bi</b><span>Apple M1 · 2020</span></div><div class="num anim d3"><b data-ed="t144">208 bi</b><span>NVIDIA B200 · 2024</span></div></div><p data-ed="t145" class="rodape anim d3">Cerca de 26 dobras em pouco mais de 50 anos, como Gordon Moore previu em 1965 e 1975.</p></div></section><section class="slide claro-bg t-fluxo"><div class="sl-top"><span>Arquitetura de Von Neumann · 1945</span><span class="sl-deck">Masterclass de Hardware</span></div><div class="sl-num">13<i>/49</i></div><div class="sl-c"><h2 data-ed="t146" class="titulo anim">Programa e dados na mesma memória</h2><div class="fluxo"><div class="passo anim d0"><span class="p-n">01</span><b data-ed="t147">Buscar</b><p data-ed="t148">A UC lê a instrução no endereço do PC</p></div><div class="passo anim d1"><span class="p-n">02</span><b data-ed="t149">Decodificar</b><p data-ed="t150">Entende o que a instrução pede</p></div><div class="passo anim d2"><span class="p-n">03</span><b data-ed="t151">Executar</b><p data-ed="t152">A ULA faz a conta e guarda o resultado</p></div></div><p data-ed="t153" class="rodape anim d3">O gargalo de Von Neumann (a CPU esperando a memória) é o motivo de existir a memória cache L1, L2 e L3.</p></div></section><section class="slide escuro secao"><div class="grade"></div><p data-ed="t154" class="sec-n anim">III</p><div class="sec-c"><h2 data-ed="t155" class="anim d1">Internet</h2><p data-ed="t156" class="anim d2">Uma rede de redes, construída em camadas</p></div><div class="sl-num claro">14<i>/49</i></div></section><section class="slide claro-bg t-duas"><div class="sl-top"><span>Atenção</span><span class="sl-deck">Masterclass de Hardware</span></div><div class="sl-num">15<i>/49</i></div><div class="sl-c"><h2 data-ed="t157" class="titulo anim">Internet ≠ Web</h2><div class="duas"><div class="col ca anim"><h3 data-ed="t158">Internet</h3><p data-ed="t159" class="lead">A infraestrutura: cabos, roteadores e o TCP/IP</p><ul><li data-ed="t160">ARPANET: 1969</li><li data-ed="t161">TCP/IP adotado em 1º/01/1983</li></ul></div><div class="col cb anim"><h3 data-ed="t162">World Wide Web</h3><p data-ed="t163" class="lead">Um serviço sobre a internet: páginas e links</p><ul><li data-ed="t164">Tim Berners-Lee, CERN, 1989–1991</li><li data-ed="t165">HTML, HTTP e URL</li></ul></div></div></div></section><section class="slide claro-bg t-linha"><div class="sl-top"><span>Internet no mundo</span><span class="sl-deck">Masterclass de Hardware</span></div><div class="sl-num">16<i>/49</i></div><div class="sl-c"><h2 data-ed="t166" class="titulo anim">Da ARPANET ao 5G</h2><ol class="linha"><li data-ed="t167" class="anim d0"><span class="l-a">1969</span><b data-ed="t168">ARPANET</b><p data-ed="t169">Primeira mensagem: &quot;LO&quot;</p></li><li data-ed="t170" class="anim d0"><span class="l-a">1971</span><b data-ed="t171">E-mail</b><p data-ed="t172">Ray Tomlinson e o @</p></li><li data-ed="t173" class="anim d1"><span class="l-a">1974</span><b data-ed="t174">TCP/IP</b><p data-ed="t175">Vint Cerf e Bob Kahn</p></li><li data-ed="t176" class="anim d1"><span class="l-a">1983</span><b data-ed="t177">DNS</b><p data-ed="t178">Nomes em vez de números</p></li><li data-ed="t179" class="anim d2"><span class="l-a">1991</span><b data-ed="t180">Web aberta</b><p data-ed="t181">info.cern.ch</p></li><li data-ed="t182" class="anim d2"><span class="l-a">1993</span><b data-ed="t183">Mosaic</b><p data-ed="t184">Navegador com imagens</p></li><li data-ed="t185" class="anim d3"><span class="l-a">2007</span><b data-ed="t186">Smartphone</b><p data-ed="t187">Internet no bolso</p></li><li data-ed="t188" class="anim d3"><span class="l-a">2024</span><b data-ed="t189">Wi-Fi 7</b><p data-ed="t190">E fibra em casa</p></li></ol></div></section><section class="slide claro-bg t-linha"><div class="sl-top"><span>Internet no Brasil</span><span class="sl-deck">Masterclass de Hardware</span></div><div class="sl-num">17<i>/49</i></div><div class="sl-c"><h2 data-ed="t191" class="titulo anim">Das universidades para todos</h2><ol class="linha"><li data-ed="t192" class="anim d0"><span class="l-a">1988–89</span><b data-ed="t193">Bitnet</b><p data-ed="t194">LNCC (Rio) e Fapesp (SP)</p></li><li data-ed="t195" class="anim d0"><span class="l-a">abr. 1989</span><b data-ed="t196">Domínio .br</b><p data-ed="t197">Demi Getschko, Fapesp</p></li><li data-ed="t198" class="anim d1"><span class="l-a">set. 1989</span><b data-ed="t199">RNP</b><p data-ed="t200">Rede acadêmica nacional</p></li><li data-ed="t201" class="anim d1"><span class="l-a">início 1991</span><b data-ed="t202">TCP/IP</b><p data-ed="t203">O Brasil entra na internet</p></li><li data-ed="t204" class="anim d2"><span class="l-a">jun. 1992</span><b data-ed="t205">Eco-92</b><p data-ed="t206">A internet aparece ao público</p></li><li data-ed="t207" class="anim d2"><span class="l-a">31/05/1995</span><b data-ed="t208">CGI.br</b><p data-ed="t209">Abertura comercial</p></li><li data-ed="t210" class="anim d3"><span class="l-a">1999</span><b data-ed="t211">Banda larga</b><p data-ed="t212">Speedy, Velox, Virtua</p></li><li data-ed="t213" class="anim d3"><span class="l-a">2014</span><b data-ed="t214">Marco Civil</b><p data-ed="t215">Lei 12.965/2014</p></li></ol></div></section><section class="slide escuro secao"><div class="grade"></div><p data-ed="t216" class="sec-n anim">IV</p><div class="sec-c"><h2 data-ed="t217" class="anim d1">A linguagem do computador</h2><p data-ed="t218" class="anim d2">Bits, bytes, hertz e caracteres</p></div><div class="sl-num claro">18<i>/49</i></div></section><section class="slide claro-bg t-numeros"><div class="sl-top"><span>Bit e byte</span><span class="sl-deck">Masterclass de Hardware</span></div><div class="sl-num">19<i>/49</i></div><div class="sl-c"><h2 data-ed="t219" class="titulo anim">Tudo vira zero e um</h2><div class="nums n4"><div class="num anim d0"><b data-ed="t220">0 ou 1</b><span>1 bit</span></div><div class="num anim d1"><b data-ed="t221">8 bits</b><span>1 byte</span></div><div class="num anim d2"><b data-ed="t222">256</b><span>valores em 1 byte</span></div><div class="num anim d3"><b data-ed="t223">01000001</b><span>a letra &quot;A&quot;</span></div></div><p data-ed="t224" class="rodape anim d3">b minúsculo = bit (velocidade de internet) · B maiúsculo = byte (tamanho de arquivo).</p></div></section><section class="slide claro-bg t-tabela"><div class="sl-top"><span>Armazenamento</span><span class="sl-deck">Masterclass de Hardware</span></div><div class="sl-num">20<i>/49</i></div><div class="sl-c"><h2 data-ed="t225" class="titulo anim">KB, MB, GB, TB e o HD que &quot;encolheu&quot;</h2><table class="tab anim"><thead><tr><th data-ed="t226">Vendido como</th><th data-ed="t227">O Windows mostra</th><th data-ed="t228">Por quê</th></tr></thead><tbody><tr><td data-ed="t229">256 GB</td><td data-ed="t230">238 GB</td><td data-ed="t231">Fabricante: × 1.000</td></tr><tr><td data-ed="t232">500 GB</td><td data-ed="t233">465 GB</td><td data-ed="t234">Windows: × 1.024</td></tr><tr><td data-ed="t235">1 TB</td><td data-ed="t236">931 GB</td><td data-ed="t237">São os mesmos bytes</td></tr><tr><td data-ed="t238">2 TB</td><td data-ed="t239">1,81 TB</td><td data-ed="t240">Em unidades diferentes</td></tr></tbody></table><p data-ed="t241" class="rodape anim d3">1.000.000.000.000 bytes ÷ 1.024³ = 931,32 GiB. Não falta nada.</p></div></section><section class="slide claro-bg t-numeros"><div class="sl-top"><span>Velocidade</span><span class="sl-deck">Masterclass de Hardware</span></div><div class="sl-num">21<i>/49</i></div><div class="sl-c"><h2 data-ed="t242" class="titulo anim">Mbps ÷ 8 = MB/s</h2><div class="nums n3"><div class="num anim d0"><b data-ed="t243">100 Mbps</b><span>12,5 MB/s</span></div><div class="num anim d1"><b data-ed="t244">500 Mbps</b><span>62,5 MB/s</span></div><div class="num anim d2"><b data-ed="t245">1 Gbps</b><span>125 MB/s</span></div></div><p data-ed="t246" class="rodape anim d3">Um jogo de 100 GB numa fibra de 500 Mbps leva cerca de 30 minutos. Para jogar online, o ping importa mais que os megas.</p></div></section><section class="slide claro-bg t-duas"><div class="sl-top"><span>Texto</span><span class="sl-deck">Masterclass de Hardware</span></div><div class="sl-num">22<i>/49</i></div><div class="sl-c"><h2 data-ed="t247" class="titulo anim">Tabela ASCII e UTF-8</h2><div class="duas"><div class="col ca anim"><h3 data-ed="t248">ASCII · 1963</h3><p data-ed="t249" class="lead">7 bits, 128 caracteres</p><ul><li data-ed="t250">&quot;A&quot; = 65 e &quot;a&quot; = 97 (diferença de 32)</li><li data-ed="t251">&quot;0&quot; = 48 · espaço = 32</li></ul></div><div class="col cb anim"><h3 data-ed="t252">Unicode e UTF-8 · 1991–92</h3><p data-ed="t253" class="lead">Todos os idiomas e emojis</p><ul><li data-ed="t254">ASCII ocupa 1 byte; &quot;ç&quot;, 2; emoji, 4</li><li data-ed="t255">≈ 99% dos sites usam UTF-8</li></ul></div></div></div></section><section class="slide escuro secao"><div class="grade"></div><p data-ed="t256" class="sec-n anim">V</p><div class="sec-c"><h2 data-ed="t257" class="anim d1">Bancada segura</h2><p data-ed="t258" class="anim d2">Antes de abrir qualquer gabinete</p></div><div class="sl-num claro">23<i>/49</i></div></section><section class="slide claro-bg t-numeros"><div class="sl-top"><span>Elétrica básica</span><span class="sl-deck">Masterclass de Hardware</span></div><div class="sl-num">24<i>/49</i></div><div class="sl-c"><h2 data-ed="t259" class="titulo anim">Três fórmulas resolvem quase tudo</h2><div class="nums n3"><div class="num anim d0"><b data-ed="t260">V = R × I</b><span>Lei de Ohm</span></div><div class="num anim d1"><b data-ed="t261">P = V × I</b><span>Potência</span></div><div class="num anim d2"><b data-ed="t262">kWh = kW × h</b><span>Energia na conta</span></div></div><p data-ed="t263" class="rodape anim d3">PC de 400 W, 4 h por dia, 30 dias = 48 kWh ≈ R$ 48 por mês (a R$ 1,00/kWh). Tomada brasileira: 127 V ou 220 V, padrão NBR 14136.</p></div></section><section class="slide claro-bg t-duas"><div class="sl-top"><span>Estática e oxidação</span><span class="sl-deck">Masterclass de Hardware</span></div><div class="sl-num">25<i>/49</i></div><div class="sl-c"><h2 data-ed="t264" class="titulo anim">O que fazer e o que nunca fazer</h2><div class="duas"><div class="col ca anim"><h3 data-ed="t265">Faça</h3><p data-ed="t266" class="lead">Pulseira antiestática no gabinete</p><ul><li data-ed="t267">Segure as peças pelas bordas</li><li data-ed="t268">Contatos: borracha branca + isopropílico 99%</li></ul></div><div class="col cb anim"><h3 data-ed="t269">Nunca</h3><p data-ed="t270" class="lead">Soprar contatos (a saliva oxida)</p><ul><li data-ed="t271">Abrir a fonte (≈ 400 V nos capacitores)</li><li data-ed="t272">Álcool comum, lixa ou aspirador nas placas</li></ul></div></div></div></section><section class="slide escuro secao"><div class="grade"></div><p data-ed="t273" class="sec-n anim">VI</p><div class="sec-c"><h2 data-ed="t274" class="anim d1">Componentes</h2><p data-ed="t275" class="anim d2">Cada peça: o que é, como funciona, problemas e preço</p></div><div class="sl-num claro">26<i>/49</i></div></section><section class="slide claro-bg t-cards"><div class="sl-top"><span>O mapa do PC</span><span class="sl-deck">Masterclass de Hardware</span></div><div class="sl-num">27<i>/49</i></div><div class="sl-c"><h2 data-ed="t276" class="titulo anim">Quatro pilares e quem os sustenta</h2><div class="cards c3 n6"><div class="card anim d0"><span class="c-k">Processar</span><b data-ed="t277">CPU e GPU</b><p data-ed="t278">O cérebro e o artista</p></div><div class="card anim d1"><span class="c-k">Memorizar</span><b data-ed="t279">RAM</b><p data-ed="t280">A mesa de trabalho</p></div><div class="card anim d2"><span class="c-k">Guardar</span><b data-ed="t281">SSD e HD</b><p data-ed="t282">O armário</p></div><div class="card anim d3"><span class="c-k">Comunicar</span><b data-ed="t283">E/S e rede</b><p data-ed="t284">As mãos, os olhos e o carteiro</p></div><div class="card anim d4"><span class="c-k">Conectar</span><b data-ed="t285">Placa-mãe e cabos</b><p data-ed="t286">O sistema nervoso</p></div><div class="card anim d5"><span class="c-k">Sustentar</span><b data-ed="t287">Fonte, cooler, gabinete</b><p data-ed="t288">Coração, ventilador e casa</p></div></div></div></section><section class="slide claro-bg t-duas"><div class="sl-top"><span>Gabinete</span><span class="sl-deck">Masterclass de Hardware</span></div><div class="sl-num">28<i>/49</i></div><div class="sl-c"><h2 data-ed="t289" class="titulo anim">Gabinete não é &quot;CPU&quot;</h2><div class="duas"><div class="col ca anim"><h3 data-ed="t290">O que faz</h3><p data-ed="t291" class="lead">Abriga, protege e aterra</p><ul><li data-ed="t292">Organiza o fluxo de ar</li><li data-ed="t293">Mid tower é o mais comum</li></ul></div><div class="col cb anim"><h3 data-ed="t294">Fluxo de ar certo</h3><p data-ed="t295" class="lead">Entrada: frente e base</p><ul><li data-ed="t296">Saída: traseira e topo</li><li data-ed="t297">Pressão positiva = menos poeira</li></ul></div></div></div></section><section class="slide claro-bg t-duas"><div class="sl-top"><span>Placa-mãe</span><span class="sl-deck">Masterclass de Hardware</span></div><div class="sl-num">29<i>/49</i></div><div class="sl-c"><h2 data-ed="t298" class="titulo anim">O centro da compatibilidade</h2><div class="duas com-img"><div class="col ca anim"><h3 data-ed="t299">O que define</h3><p data-ed="t300" class="lead">Soquete: AM5, AM4, LGA1851, LGA1700</p><ul><li data-ed="t301">Chipset: B650, X870, B860, Z890</li><li data-ed="t302">Formato: ATX, Micro-ATX, Mini-ITX</li></ul></div><div class="col cb anim"><h3 data-ed="t303">Onboard × offboard</h3><p data-ed="t304" class="lead">Onboard: integrado à placa ou à CPU</p><ul><li data-ed="t305">Offboard: placa separada no slot PCIe</li><li data-ed="t306">Com GPU dedicada, ligue o cabo na GPU</li></ul></div><figure class="duas-img anim d2"><img src="assets/asus-rog-strix-z390-f-gaming-motherboard-20201120-dsc6025.jpg" alt=""></figure></div></div></section><section class="slide claro-bg t-tabela"><div class="sl-top"><span>CPU</span><span class="sl-deck">Masterclass de Hardware</span></div><div class="sl-num">30<i>/49</i></div><div class="sl-c"><h2 data-ed="t307" class="titulo anim">Como ler o nome do processador</h2><table class="tab anim"><thead><tr><th data-ed="t308">Sufixo</th><th data-ed="t309">Significado</th><th data-ed="t310">Exemplo</th></tr></thead><tbody><tr><td data-ed="t311">Intel K</td><td data-ed="t312">Overclock liberado</td><td data-ed="t313">Core i5-14600K</td></tr><tr><td data-ed="t314">Intel F</td><td data-ed="t315">Sem vídeo integrado</td><td data-ed="t316">Core i5-14400F</td></tr><tr><td data-ed="t317">AMD X</td><td data-ed="t318">Clock mais alto</td><td data-ed="t319">Ryzen 5 9600X</td></tr><tr><td data-ed="t320">AMD X3D</td><td data-ed="t321">Cache 3D, ótimo para jogos</td><td data-ed="t322">Ryzen 7 9800X3D</td></tr><tr><td data-ed="t323">AMD G</td><td data-ed="t324">Vídeo integrado forte</td><td data-ed="t325">Ryzen 5 8600G</td></tr></tbody></table><p data-ed="t326" class="rodape anim d3">Desempenho ≈ clock × IPC × núcleos. Mais GHz não é sinônimo de mais rápido.</p></div></section><section class="slide claro-bg t-duas"><div class="sl-top"><span>Refrigeração</span><span class="sl-deck">Masterclass de Hardware</span></div><div class="sl-num">31<i>/49</i></div><div class="sl-c"><h2 data-ed="t327" class="titulo anim">Dissipador e cooler</h2><div class="duas"><div class="col ca anim"><h3 data-ed="t328">Dissipador (passivo)</h3><p data-ed="t329" class="lead">Metal que retira o calor</p><ul><li data-ed="t330">Base e heatpipes de cobre, aletas de alumínio</li><li data-ed="t331">Pasta térmica: um grão de ervilha</li></ul></div><div class="col cb anim"><h3 data-ed="t332">Cooler (ativo)</h3><p data-ed="t333" class="lead">Ventoinha que move o ar</p><ul><li data-ed="t334">Air cooler × water cooler AIO</li><li data-ed="t335">4 pinos PWM; veja a seta do sentido do ar</li></ul></div></div></div></section><section class="slide claro-bg t-tabela"><div class="sl-top"><span>Memória RAM</span><span class="sl-deck">Masterclass de Hardware</span></div><div class="sl-num">32<i>/49</i></div><div class="sl-c"><h2 data-ed="t336" class="titulo anim">A evolução dos DDRs</h2><table class="tab anim"><thead><tr><th data-ed="t337">Geração</th><th data-ed="t338">Ano</th><th data-ed="t339">Tensão</th><th data-ed="t340">Pinos (desktop)</th><th data-ed="t341">Velocidade</th></tr></thead><tbody><tr><td data-ed="t342">DDR</td><td data-ed="t343">2000</td><td data-ed="t344">2,5 V</td><td data-ed="t345">184</td><td data-ed="t346">200–400 MT/s</td></tr><tr><td data-ed="t347">DDR2</td><td data-ed="t348">2003</td><td data-ed="t349">1,8 V</td><td data-ed="t350">240</td><td data-ed="t351">400–1.066</td></tr><tr><td data-ed="t352">DDR3</td><td data-ed="t353">2007</td><td data-ed="t354">1,5 V</td><td data-ed="t355">240</td><td data-ed="t356">800–2.133</td></tr><tr><td data-ed="t357">DDR4</td><td data-ed="t358">2014</td><td data-ed="t359">1,2 V</td><td data-ed="t360">288</td><td data-ed="t361">1.600–3.200</td></tr><tr><td data-ed="t362">DDR5</td><td data-ed="t363">2020/21</td><td data-ed="t364">1,1 V</td><td data-ed="t365">288</td><td data-ed="t366">4.800–8.000+</td></tr></tbody></table><p data-ed="t367" class="rodape anim d3">Gerações não são compatíveis (o chanfro muda). Use dois pentes (dual channel) e ative o XMP/EXPO.</p></div></section><section class="slide claro-bg t-duas"><div class="sl-top"><span>Memórias</span><span class="sl-deck">Masterclass de Hardware</span></div><div class="sl-num">33<i>/49</i></div><div class="sl-c"><h2 data-ed="t368" class="titulo anim">RAM × ROM</h2><div class="duas"><div class="col ca anim"><h3 data-ed="t369">RAM</h3><p data-ed="t370" class="lead">Volátil: esquece ao desligar</p><ul><li data-ed="t371">Programas abertos agora</li><li data-ed="t372">16–32 GB recomendados em 2026</li></ul></div><div class="col cb anim"><h3 data-ed="t373">ROM (firmware)</h3><p data-ed="t374" class="lead">Não volátil</p><ul><li data-ed="t375">BIOS/UEFI: acorda o PC</li><li data-ed="t376">ROM → PROM → EPROM → EEPROM → flash</li></ul></div></div></div></section><section class="slide claro-bg t-duas"><div class="sl-top"><span>Placa de vídeo</span><span class="sl-deck">Masterclass de Hardware</span></div><div class="sl-num">34<i>/49</i></div><div class="sl-c"><h2 data-ed="t377" class="titulo anim">Milhares de núcleos em paralelo</h2><div class="duas"><div class="col ca anim"><h3 data-ed="t378">Para que serve</h3><p data-ed="t379" class="lead">Jogos, vídeo, 3D</p><ul><li data-ed="t380">Gerar imagens e rodar IA local</li><li data-ed="t381">O fator decisivo para IA é a VRAM</li></ul></div><div class="col cb anim"><h3 data-ed="t382">Como escolher</h3><p data-ed="t383" class="lead">NVIDIA RTX × AMD Radeon RX × Intel Arc</p><ul><li data-ed="t384">Confira o tamanho no gabinete e a fonte</li><li data-ed="t385">RTX 5060 ≈ R$ 2.400 · RX 9060 XT 16 GB ≈ R$ 2.800–3.700</li></ul></div></div></div></section><section class="slide claro-bg t-duas"><div class="sl-top"><span>Placa de rede</span><span class="sl-deck">Masterclass de Hardware</span></div><div class="sl-num">35<i>/49</i></div><div class="sl-c"><h2 data-ed="t386" class="titulo anim">Cabo ou Wi-Fi?</h2><div class="duas"><div class="col ca anim"><h3 data-ed="t387">Ethernet</h3><p data-ed="t388" class="lead">Gigabit e 2,5 Gbps; cabo Cat5e ou Cat6</p><ul><li data-ed="t389">Ping menor e estável</li><li data-ed="t390">Preso em 94 Mbps? Cabo ou porta de 100 Mbps</li></ul></div><div class="col cb anim"><h3 data-ed="t391">Wi-Fi</h3><p data-ed="t392" class="lead">Wi-Fi 6, 6E e 7</p><ul><li data-ed="t393">2,4 GHz alcança mais; 5 e 6 GHz são mais rápidos</li><li data-ed="t394">Endereço MAC: o &quot;CPF&quot; da placa</li></ul></div></div></div></section><section class="slide claro-bg t-duas"><div class="sl-top"><span>Fonte de alimentação</span><span class="sl-deck">Masterclass de Hardware</span></div><div class="sl-num">36<i>/49</i></div><div class="sl-c"><h2 data-ed="t395" class="titulo anim">A última peça para economizar</h2><div class="duas"><div class="col ca anim"><h3 data-ed="t396">O que faz</h3><p data-ed="t397" class="lead">Converte CA (127/220 V) em CC (12, 5, 3,3 V)</p><ul><li data-ed="t398">Protege: OVP, OCP, SCP, OTP</li><li data-ed="t399">80 PLUS Gold ≈ 90% de eficiência</li></ul></div><div class="col cb anim"><h3 data-ed="t400">Como dimensionar</h3><p data-ed="t401" class="lead">Some CPU + GPU + ≈ 75 W</p><ul><li data-ed="t402">Adicione 30–50% de margem</li><li data-ed="t403">Ex.: Ryzen 5 7600 + RTX 5070 → 650 W Gold ATX 3.1</li></ul></div></div></div></section><section class="slide claro-bg t-tabela"><div class="sl-top"><span>Cabos</span><span class="sl-deck">Masterclass de Hardware</span></div><div class="sl-num">37<i>/49</i></div><div class="sl-c"><h2 data-ed="t404" class="titulo anim">Os cabos que você vai ligar</h2><table class="tab anim"><thead><tr><th data-ed="t405">Cabo</th><th data-ed="t406">Função</th><th data-ed="t407">Atenção</th></tr></thead><tbody><tr><td data-ed="t408">ATX 24 pinos</td><td data-ed="t409">Energia da placa-mãe</td><td data-ed="t410">Trava até o fim</td></tr><tr><td data-ed="t411">EPS 8 pinos</td><td data-ed="t412">Energia da CPU</td><td data-ed="t413">Não confunda com o PCIe</td></tr><tr><td data-ed="t414">PCIe 6+2 / 12V-2x6</td><td data-ed="t415">Energia da GPU</td><td data-ed="t416">Encaixe completo, sem dobrar</td></tr><tr><td data-ed="t417">SATA</td><td data-ed="t418">Dados e energia de HD/SSD</td><td data-ed="t419">Cabo ruim gera erros CRC</td></tr><tr><td data-ed="t420">HDMI 2.1 / DisplayPort</td><td data-ed="t421">Vídeo</td><td data-ed="t422">HDMI antigo limita os Hz</td></tr><tr><td data-ed="t423">USB-C</td><td data-ed="t424">Dados, vídeo e carga</td><td data-ed="t425">O formato não diz a velocidade</td></tr></tbody></table></div></section><section class="slide claro-bg t-tabela"><div class="sl-top"><span>Armazenamento</span><span class="sl-deck">Masterclass de Hardware</span></div><div class="sl-num">38<i>/49</i></div><div class="sl-c"><h2 data-ed="t426" class="titulo anim">HD × SSD</h2><table class="tab anim"><thead><tr><th data-ed="t427"></th><th data-ed="t428">HD</th><th data-ed="t429">SSD NVMe</th></tr></thead><tbody><tr><td data-ed="t430">Tecnologia</td><td data-ed="t431">Magnética, com partes móveis</td><td data-ed="t432">Flash NAND, sem partes móveis</td></tr><tr><td data-ed="t433">Tempo de acesso</td><td data-ed="t434">5–15 ms</td><td data-ed="t435">0,02–0,1 ms</td></tr><tr><td data-ed="t436">Velocidade</td><td data-ed="t437">80–280 MB/s</td><td data-ed="t438">3.500–15.000 MB/s</td></tr><tr><td data-ed="t439">Custo por TB (out/2026)</td><td data-ed="t440">≈ R$ 280–360</td><td data-ed="t441">≈ R$ 1.000–1.500</td></tr><tr><td data-ed="t442">Melhor uso</td><td data-ed="t443">Backup e arquivo</td><td data-ed="t444">Sistema, programas e jogos</td></tr></tbody></table><p data-ed="t445" class="rodape anim d3">Trocar HD por SSD é o upgrade que mais muda a sensação de velocidade. Nunca desfragmente o SSD.</p></div></section><section class="slide claro-bg t-tabela"><div class="sl-top"><span>Mercado · 28/10/2026</span><span class="sl-deck">Masterclass de Hardware</span></div><div class="sl-num">39<i>/49</i></div><div class="sl-c"><h2 data-ed="t446" class="titulo anim">Preços de referência no Brasil</h2><table class="tab anim"><thead><tr><th data-ed="t447">Peça</th><th data-ed="t448">Menor preço à vista</th></tr></thead><tbody><tr><td data-ed="t449">Ryzen 5 7600 · Core i5-14400F</td><td data-ed="t450">≈ R$ 940 · R$ 980</td></tr><tr><td data-ed="t451">Ryzen 7 9800X3D</td><td data-ed="t452">≈ R$ 2.130–2.500</td></tr><tr><td data-ed="t453">DDR5 16 GB 6000 · kit 2 × 16 GB</td><td data-ed="t454">≈ R$ 2.100 · R$ 3.950</td></tr><tr><td data-ed="t455">RTX 5060 · RTX 5070</td><td data-ed="t456">≈ R$ 2.400 · R$ 5.100</td></tr><tr><td data-ed="t457">SSD NVMe 1 TB</td><td data-ed="t458">≈ R$ 1.150</td></tr><tr><td data-ed="t459">Fonte 750 W Gold</td><td data-ed="t460">a partir de ≈ R$ 340–390</td></tr></tbody></table><p data-ed="t461" class="rodape anim d3">A demanda dos data centers de IA encareceu RAM e SSD em 2025–2026. Confira o preço do dia.</p></div></section><section class="slide escuro secao"><div class="grade"></div><p data-ed="t462" class="sec-n anim">VIII</p><div class="sec-c"><h2 data-ed="t463" class="anim d1">Na prática</h2><p data-ed="t464" class="anim d2">Compatibilidade, montagem e manutenção</p></div><div class="sl-num claro">40<i>/49</i></div></section><section class="slide claro-bg t-fluxo"><div class="sl-top"><span>Compatibilidade</span><span class="sl-deck">Masterclass de Hardware</span></div><div class="sl-num">41<i>/49</i></div><div class="sl-c"><h2 data-ed="t465" class="titulo anim">A ordem certa de escolha</h2><div class="fluxo"><div class="passo anim d0"><span class="p-n">01</span><b data-ed="t466">CPU + placa-mãe</b><p data-ed="t467">Soquete, chipset e BIOS</p></div><div class="passo anim d1"><span class="p-n">02</span><b data-ed="t468">RAM, GPU e SSD</b><p data-ed="t469">DDR, tamanho e tipo de M.2</p></div><div class="passo anim d2"><span class="p-n">03</span><b data-ed="t470">Fonte, cooler, gabinete</b><p data-ed="t471">Potência, altura e espaço</p></div></div><p data-ed="t472" class="rodape anim d3">Confira no PCPartPicker e na CPU Support List da placa-mãe.</p></div></section><section class="slide claro-bg t-cards"><div class="sl-top"><span>Manutenção</span><span class="sl-deck">Masterclass de Hardware</span></div><div class="sl-num">42<i>/49</i></div><div class="sl-c"><h2 data-ed="t473" class="titulo anim">Antes, depois e pelos indicadores</h2><div class="cards c3 n3"><div class="card anim d0"><span class="c-k">Preventiva</span><b data-ed="t474">Antes do problema</b><p data-ed="t475">Limpeza a cada 3–6 meses, pasta térmica, atualizações, backup 3-2-1</p></div><div class="card anim d1"><span class="c-k">Corretiva</span><b data-ed="t476">Depois do problema</b><p data-ed="t477">Diagnosticar do simples para o complexo, trocando uma coisa por vez</p></div><div class="card anim d2"><span class="c-k">Preditiva</span><b data-ed="t478">Pelos indicadores</b><p data-ed="t479">SMART em &quot;Cuidado&quot;, temperatura subindo: aja antes da falha</p></div></div></div></section><section class="slide claro-bg t-duas"><div class="sl-top"><span>Notebooks</span><span class="sl-deck">Masterclass de Hardware</span></div><div class="sl-num">43<i>/49</i></div><div class="sl-c"><h2 data-ed="t480" class="titulo anim">Portátil: o que muda</h2><div class="duas"><div class="col ca anim"><h3 data-ed="t481">Por dentro</h3><p data-ed="t482" class="lead">CPU e GPU soldadas</p><ul><li data-ed="t483">Upgrade: SSD e RAM (se for SO-DIMM)</li><li data-ed="t484">A mesma GPU &quot;Laptop&quot; varia com o TGP</li></ul></div><div class="col cb anim"><h3 data-ed="t485">Bateria de lítio</h3><p data-ed="t486" class="lead">Compare em Wh, não em mAh</p><ul><li data-ed="t487">Faixa ideal de 20–80%, longe do calor</li><li data-ed="t488">Bateria estufada: pare de usar na hora</li></ul></div></div></div></section><section class="slide escuro secao"><div class="grade"></div><p data-ed="t489" class="sec-n anim">IX</p><div class="sec-c"><h2 data-ed="t490" class="anim d1">Fronteira</h2><p data-ed="t491" class="anim d2">Computação quântica e inteligência artificial</p></div><div class="sl-num claro">44<i>/49</i></div></section><section class="slide claro-bg t-duas"><div class="sl-top"><span>Computação quântica</span><span class="sl-deck">Masterclass de Hardware</span></div><div class="sl-num">45<i>/49</i></div><div class="sl-c"><h2 data-ed="t492" class="titulo anim">Uma moeda girando</h2><div class="duas"><div class="col ca anim"><h3 data-ed="t493">Como funciona</h3><p data-ed="t494" class="lead">Qubit: superposição de 0 e 1</p><ul><li data-ed="t495">Emaranhamento e interferência</li><li data-ed="t496">Operação perto do zero absoluto (≈ 10 mK)</li></ul></div><div class="col cb anim"><h3 data-ed="t497">Onde está em 2026</h3><p data-ed="t498" class="lead">Willow (2024): erros abaixo do limiar</p><ul><li data-ed="t499">Quantum Echoes (2025), Nobel 2025</li><li data-ed="t500">Serve para química e criptografia, não para o seu PC</li></ul></div></div></div></section><section class="slide claro-bg t-duas"><div class="sl-top"><span>IA e hardware</span><span class="sl-deck">Masterclass de Hardware</span></div><div class="sl-num">46<i>/49</i></div><div class="sl-c"><h2 data-ed="t501" class="titulo anim">Por que a GPU virou o motor da IA</h2><div class="duas"><div class="col ca anim"><h3 data-ed="t502">A razão</h3><p data-ed="t503" class="lead">Redes neurais = multiplicação de matrizes</p><ul><li data-ed="t504">Milhares de núcleos + Tensor Cores</li><li data-ed="t505">HBM, TPUs e NPUs (Copilot+ ≥ 40 TOPS)</li></ul></div><div class="col cb anim"><h3 data-ed="t506">O efeito no seu bolso</h3><p data-ed="t507" class="lead">Fábricas desviaram produção para HBM</p><ul><li data-ed="t508">TrendForce: DRAM +58–63% no 2º tri de 2026</li><li data-ed="t509">Planeje a RAM: 16 GB ok, 32 GB ideal</li></ul></div></div></div></section><section class="slide claro-bg t-cards"><div class="sl-top"><span>Resumo</span><span class="sl-deck">Masterclass de Hardware</span></div><div class="sl-num">47<i>/49</i></div><div class="sl-c"><h2 data-ed="t510" class="titulo anim">Dez frases para nunca esquecer</h2><div class="cards c5 n10"><div class="card anim d0"><span class="c-k">1</span><b data-ed="t511">Gabinete não é CPU</b></div><div class="card anim d1"><span class="c-k">2</span><b data-ed="t512">A fonte é a última peça para economizar</b></div><div class="card anim d2"><span class="c-k">3</span><b data-ed="t513">Cabo de vídeo vai na placa de vídeo</b></div><div class="card anim d3"><span class="c-k">4</span><b data-ed="t514">Dois pentes são melhores que um</b></div><div class="card anim d4"><span class="c-k">5</span><b data-ed="t515">Ative o XMP/EXPO</b></div><div class="card anim d5"><span class="c-k">6</span><b data-ed="t516">SSD muda a sensação de velocidade</b></div><div class="card anim d5"><span class="c-k">7</span><b data-ed="t517">Mbps ÷ 8 = MB/s</b></div><div class="card anim d5"><span class="c-k">8</span><b data-ed="t518">1 TB = 931 GB, e não falta nada</b></div><div class="card anim d5"><span class="c-k">9</span><b data-ed="t519">Não sopre, não abra a fonte, use a pulseira</b></div><div class="card anim d5"><span class="c-k">10</span><b data-ed="t520">Backup 3-2-1: todo disco falha um dia</b></div></div></div></section><section class="slide claro-bg t-cards"><div class="sl-top"><span>Para crianças</span><span class="sl-deck">Masterclass de Hardware</span></div><div class="sl-num">48<i>/49</i></div><div class="sl-c"><h2 data-ed="t521" class="titulo anim">O corpo do computador</h2><div class="cards c3 n6"><div class="card anim d0"><span class="c-k">Cérebro</span><b data-ed="t522">Processador</b><p data-ed="t523">Pensa e faz contas</p></div><div class="card anim d1"><span class="c-k">Mesa de trabalho</span><b data-ed="t524">Memória RAM</b><p data-ed="t525">Esquece tudo quando desliga</p></div><div class="card anim d2"><span class="c-k">Armário</span><b data-ed="t526">SSD e HD</b><p data-ed="t527">Guarda para sempre</p></div><div class="card anim d3"><span class="c-k">Artista</span><b data-ed="t528">Placa de vídeo</b><p data-ed="t529">Desenha a tela</p></div><div class="card anim d4"><span class="c-k">Coração</span><b data-ed="t530">Fonte</b><p data-ed="t531">Dá energia para todos</p></div><div class="card anim d5"><span class="c-k">Ventilador</span><b data-ed="t532">Cooler</b><p data-ed="t533">Tira a &quot;febre&quot; do PC</p></div></div></div></section><section class="slide escuro capa fim"><div class="grade"></div><div class="capa-c"><h1 data-ed="t534" class="anim">Obrigado</h1><p data-ed="t535" class="sub anim d1">Masterclass de Hardware · Outubro de 2026</p><p data-ed="t536" class="nota anim d2">Material completo: HTML interativo, apostila em PDF, documento Word e esta apresentação.</p></div></section>
+</main></div>
+<div class="deck-controls"><button id="prev" aria-label="Slide anterior">‹</button><span id="cont"></span><button id="next" aria-label="Próximo slide">›</button><button id="edit" aria-label="Editar textos (tecla E)" title="Editar textos (E)">✎</button></div>
+<script>
+/* === CONTROLADOR DA APRESENTAÇÃO === */
+class SlidePresentation {
+  constructor() {
+    this.slides = document.querySelectorAll('.slide');
+    this.stage = document.getElementById('deckStage');
+    this.atual = 0;
+    const h = parseInt(location.hash.slice(1), 10);
+    this.escala(); addEventListener('resize', () => this.escala());
+    this.teclado(); this.toque(); this.roda(); this.edicao();
+    document.getElementById('prev').onclick = () => this.ir(this.atual - 1);
+    document.getElementById('next').onclick = () => this.ir(this.atual + 1);
+    this.ir(isNaN(h) ? 0 : h - 1);
+  }
+  escala() {
+    const f = Math.min(innerWidth / 1920, innerHeight / 1080);
+    this.stage.style.transform = `translate(${(innerWidth - 1920 * f) / 2}px, ${(innerHeight - 1080 * f) / 2}px) scale(${f})`;
+  }
+  ir(i) {
+    this.atual = Math.max(0, Math.min(i, this.slides.length - 1));
+    this.slides.forEach((s, k) => { s.classList.toggle('active', k === this.atual); s.classList.toggle('visible', k === this.atual); });
+    document.getElementById('cont').textContent = (this.atual + 1) + ' / ' + this.slides.length;
+    document.getElementById('prog').style.width = (100 * (this.atual + 1) / this.slides.length) + '%';
+    history.replaceState(null, '', '#' + (this.atual + 1));
+  }
+  teclado() {
+    addEventListener('keydown', (e) => {
+      if (document.activeElement && document.activeElement.isContentEditable) return;
+      if (['ArrowRight', 'ArrowDown', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); this.ir(this.atual + 1); }
+      if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(e.key)) { e.preventDefault(); this.ir(this.atual - 1); }
+      if (e.key === 'Home') this.ir(0);
+      if (e.key === 'End') this.ir(this.slides.length - 1);
+      if (e.key === 'f' || e.key === 'F') document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+      if (e.key === 'e' || e.key === 'E') this.alternarEdicao();
+    });
+  }
+  toque() {
+    let x0 = null;
+    addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+    addEventListener('touchend', (e) => {
+      if (x0 === null) return;
+      const dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 40) this.ir(this.atual + (dx < 0 ? 1 : -1));
+      x0 = null;
+    });
+  }
+  roda() {
+    let trava = false;
+    addEventListener('wheel', (e) => {
+      if (trava || Math.abs(e.deltaY) < 20) return;
+      trava = true; this.ir(this.atual + (e.deltaY > 0 ? 1 : -1));
+      setTimeout(() => { trava = false; }, 650);
+    }, { passive: true });
+  }
+  /* === EDIÇÃO INLINE (tecla E) === */
+  edicao() {
+    this.editando = false;
+    try {
+      const salvo = JSON.parse(localStorage.getItem('mh-slides') || '{}');
+      Object.keys(salvo).forEach((k) => { const el = document.querySelector('[data-ed="' + k + '"]'); if (el) el.innerHTML = salvo[k]; });
+    } catch (e) {}
+    document.getElementById('edit').onclick = () => this.alternarEdicao();
+  }
+  alternarEdicao() {
+    this.editando = !this.editando;
+    document.querySelectorAll('[data-ed]').forEach((el) => { el.contentEditable = this.editando ? 'true' : 'false'; });
+    document.getElementById('edit').textContent = this.editando ? '✓' : '✎';
+    if (!this.editando) {
+      const dados = {};
+      document.querySelectorAll('[data-ed]').forEach((el) => { dados[el.dataset.ed] = el.innerHTML; });
+      try { localStorage.setItem('mh-slides', JSON.stringify(dados)); } catch (e) {}
+    }
+  }
+}
+new SlidePresentation();
+</script>
+</body></html>

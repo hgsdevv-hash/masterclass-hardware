@@ -1,0 +1,162 @@
+{
+"01": [
+ ["O que é firmware?", ["Um tipo de vírus", "Software gravado dentro de um componente de hardware, como a BIOS", "Um cabo de rede", "Um modelo de processador"], 1, "Firmware é software que mora gravado no hardware, como a BIOS/UEFI da placa-mãe."],
+ ["Por que o computador é binário?", ["Porque é mais bonito", "Porque é mais fácil e confiável distinguir só dois estados elétricos", "Porque a base 10 foi proibida", "Porque o Windows exige"], 1, "Dois estados (tem tensão / não tem) resistem melhor ao ruído elétrico."],
+ ["No ciclo IPO, o monitor é...", ["Entrada", "Processamento", "Saída", "Armazenamento"], 2, "O monitor recebe a imagem que sai do computador."]
+],
+"02": [
+ ["Quem escreveu o que é considerado o primeiro programa de computador publicado?", ["Charles Babbage", "Ada Lovelace", "Alan Turing", "Blaise Pascal"], 1, "Ada Lovelace, em 1843, na Nota G (números de Bernoulli)."],
+ ["O tear de Jacquard é importante porque...", ["Foi o primeiro computador eletrônico", "Usava cartões perfurados como programa", "Inventou o transistor", "Criou a internet"], 1, "Os cartões perfurados mudavam o padrão do tecido: um programa."],
+ ["O primeiro microprocessador comercial foi o...", ["Intel 4004", "Pentium", "Z80", "AMD Athlon"], 0, "O Intel 4004 foi anunciado em novembro de 1971, com cerca de 2.300 transistores."]
+],
+"03": [
+ ["O ENIAC é considerado o primeiro computador...", ["Mecânico", "Eletrônico, digital, programável e de propósito geral", "Com programa armazenado", "Quântico"], 1, "O primeiro com programa armazenado foi o Manchester Baby (1948)."],
+ ["Como o ENIAC era programado?", ["Por teclado e mouse", "Reconectando cabos e ajustando chaves", "Por Wi-Fi", "Por cartão de memória"], 1, "Trocar de programa podia levar dias."],
+ ["Quantas válvulas tinha o ENIAC?", ["≈ 1.700", "≈ 17.468", "≈ 170.000", "≈ 2.300"], 1, "Eram 17.468 válvulas, ≈ 27 toneladas e ≈ 150 kW."]
+],
+"04": [
+ ["Qual tecnologia define a 2ª geração de computadores?", ["Válvulas", "Transistores", "Microprocessadores", "Qubits"], 1, "O transistor (1947) substituiu a válvula."],
+ ["A Lei de Moore diz que...", ["O clock dobra a cada ano", "O número de transistores num chip dobra em intervalos regulares (≈ 2 anos)", "A RAM fica mais barata todo mês", "A internet dobra de velocidade"], 1, "Moore, em 1965 e revisando em 1975."],
+ ["Por que os processadores passaram a ter vários núcleos por volta de 2005?", ["Por moda", "O clock parou de subir por causa do calor (power wall)", "Para usar mais RAM", "Por exigência do Windows XP"], 1, "Mais núcleos deram mais desempenho sem esquentar tanto."]
+],
+"05": [
+ ["Qual é a ideia central da arquitetura de Von Neumann?", ["Usar válvulas", "Programa e dados na mesma memória", "Duas memórias separadas", "Processar só números decimais"], 1, "É o conceito de programa armazenado."],
+ ["O que é o gargalo de Von Neumann?", ["Falta de energia", "A CPU esperando dados que passam pelo mesmo barramento da memória", "Um vírus", "Um cabo SATA ruim"], 1, "A memória cache ajuda a reduzir esse gargalo."],
+ ["Qual é a ordem do ciclo de instrução?", ["Executar, buscar, decodificar", "Buscar, decodificar, executar", "Decodificar, buscar, executar", "Gravar, ler, apagar"], 1, "Fetch, decode, execute (e write-back)."]
+],
+"07": [
+ ["Internet e Web são a mesma coisa?", ["Sim", "Não: a Web é um serviço que roda sobre a internet", "Não: a internet roda sobre a Web", "Sim, desde 1995"], 1, "A internet é a infraestrutura (TCP/IP); a Web são páginas e links."],
+ ["Qual foi a primeira mensagem da ARPANET?", ["HELLO", "LO", "LOGIN", "WWW"], 1, "O sistema travou depois de \"LO\", em 29/10/1969."],
+ ["Quem criou a World Wide Web?", ["Vint Cerf", "Tim Berners-Lee", "Bill Gates", "Ray Tomlinson"], 1, "No CERN, entre 1989 e 1991."]
+],
+"08": [
+ ["Que órgão foi criado em 31/05/1995 para coordenar a internet no Brasil?", ["Anatel", "CGI.br", "Embratel", "ABNT"], 1, "Criado pela Portaria Interministerial nº 147."],
+ ["Quem é chamado de \"pai da internet brasileira\"?", ["Tadao Takahashi", "Demi Getschko", "Herbert de Souza", "Michael Stanton"], 1, "Ele cuidou do .br na Fapesp e está no Internet Hall of Fame (2014)."],
+ ["A internet chegou ao Brasil primeiro por meio de...", ["Empresas de telefonia", "Universidades e centros de pesquisa", "Lan houses", "Bancos"], 1, "LNCC, Fapesp e UFRJ, entre 1988 e 1989, pela Bitnet."]
+],
+"09": [
+ ["Quantos bits tem um byte?", ["4", "8", "10", "16"], 1, "1 byte = 8 bits = 256 valores."],
+ ["Por que um HD de 1 TB aparece com ≈ 931 GB no Windows?", ["Defeito de fábrica", "O fabricante usa base 1.000 e o Windows base 1.024", "Vírus", "Partição escondida de 69 GB"], 1, "São os mesmos bytes medidos em unidades diferentes (TB × TiB)."],
+ ["Quanto é 01000001 em decimal?", ["41", "65", "97", "128"], 1, "64 + 1 = 65, a letra \"A\" em ASCII."]
+],
+"10": [
+ ["Uma internet de 500 Mbps baixa, no máximo, a aproximadamente...", ["500 MB/s", "62,5 MB/s", "5 MB/s", "4.000 MB/s"], 1, "Divida por 8: 500 ÷ 8 = 62,5 MB/s."],
+ ["Para jogos online, o mais importante costuma ser...", ["O upload", "O ping (latência)", "O tamanho do HD", "A cor do cabo"], 1, "Ping baixo e estável vale mais que muitos megas."],
+ ["Um processador de clock maior é sempre mais rápido?", ["Sim", "Não: importam também o IPC, os núcleos e o cache", "Só se for Intel", "Só se for AMD"], 1, "O Core 2 Duo de 2,4 GHz superava o Pentium 4 de 3,8 GHz."]
+],
+"11": [
+ ["Qual é o código ASCII da letra \"A\"?", ["1", "65", "97", "255"], 1, "E o \"a\" minúsculo é 97 (diferença de 32)."],
+ ["Quantos caracteres tem o ASCII original?", ["64", "128", "256", "65.536"], 1, "São 7 bits, ou seja, 2⁷ = 128."],
+ ["Por que o texto \"ação\" às vezes aparece como \"aÃ§Ã£o\"?", ["Vírus", "Codificação lida errada (UTF-8 × Latin-1)", "Teclado quebrado", "Fonte corrompida"], 1, "É o famoso mojibake. Use sempre UTF-8."]
+],
+"12": [
+ ["Qual é a fórmula da Lei de Ohm?", ["P = V × I", "V = R × I", "E = m × c²", "kWh = V × A"], 1, "Tensão = resistência × corrente."],
+ ["Um PC de 400 W ligado por 120 horas no mês consome...", ["4,8 kWh", "48 kWh", "480 kWh", "400 kWh"], 1, "0,4 kW × 120 h = 48 kWh."],
+ ["Uma fonte ATX de qualidade com PFC ativo precisa de estabilizador?", ["Sim, sempre", "Em geral, não; prefira filtro com varistor, nobreak e DPS", "Só em 220 V", "Só em notebooks"], 1, "O PFC ativo já trabalha de 100 a 240 V."]
+],
+"13": [
+ ["Qual é a melhor forma de limpar os contatos de um pente de memória?", ["Soprar", "Borracha branca e álcool isopropílico", "Lixa", "Álcool comum 70%"], 1, "Soprar leva umidade e saliva, o que oxida."],
+ ["Uma descarga de estática que você nem sente pode danificar componentes?", ["Não", "Sim", "Só em dias de chuva", "Só no HD"], 1, "Dezenas ou centenas de volts já danificam chips; você só sente a partir de ≈ 3.000 V."],
+ ["O que nunca se deve abrir?", ["O gabinete", "A fonte de alimentação", "O teclado", "O mouse"], 1, "Os capacitores podem guardar ≈ 400 V mesmo fora da tomada."]
+],
+"14": [
+ ["A palavra hardware significava originalmente...", ["Programa", "Ferragens (parafusos, ferramentas)", "Calculadora", "Placa de vídeo"], 1, "Hard + ware: artigos rígidos."],
+ ["Qual destes é um periférico (hardware externo)?", ["Memória RAM", "Placa-mãe", "Impressora", "Processador"], 2, "Os periféricos ficam fora do gabinete."],
+ ["Qual é o princípio de diagnóstico do técnico?", ["Trocar a placa-mãe primeiro", "Do simples para o complexo, do barato para o caro", "Formatar sempre", "Começar pela GPU"], 1, "A maioria dos defeitos é mau contato, sujeira ou configuração."]
+],
+"15": [
+ ["Uma tela touch é um dispositivo de...", ["Só entrada", "Só saída", "Entrada e saída", "Armazenamento"], 2, "Ela recebe o toque e mostra a imagem."],
+ ["Monitor \"sem sinal\" num PC com placa de vídeo dedicada geralmente significa...", ["Monitor quebrado", "Cabo ligado na saída da placa-mãe em vez da GPU", "Falta de RAM", "Vírus"], 1, "Com GPU dedicada, a imagem sai pela placa de vídeo."],
+ ["No conector P2 do PC, a cor rosa é...", ["Fone", "Microfone", "Entrada de linha", "Rede"], 1, "O verde é a saída (fone) e o rosa é o microfone."]
+],
+"16": [
+ ["Qual tecla existe no ABNT2 e não no teclado US?", ["Enter", "Ç", "Tab", "Esc"], 1, "O ABNT2 tem o Ç e a tecla / ? ao lado do Shift direito."],
+ ["Qual é o atalho para reabrir uma aba fechada sem querer no navegador?", ["Ctrl + Z", "Ctrl + Shift + T", "Alt + F4", "Win + D"], 1, "Funciona no Chrome, no Edge e no Firefox."],
+ ["Por que os atalhos são mais rápidos que o mouse?", ["Porque o mouse é lento por natureza", "Apontar exige localizar e mirar alvos (Fitts/KLM); tecla não exige", "Porque o teclado tem mais energia", "Não são"], 1, "Apontar leva ≈ 1,1 s no modelo KLM; uma tecla, ≈ 0,2 s."]
+],
+"17": [
+ ["Qual é o nome correto da \"caixa\" do computador?", ["CPU", "Gabinete", "Placa-mãe", "Fonte"], 1, "CPU é o processador, que fica dentro do gabinete."],
+ ["O fluxo de ar recomendado é...", ["Entrar pelo topo e sair pela frente", "Entrar pela frente e pela base, sair pela traseira e pelo topo", "Tudo entrando", "Tudo saindo"], 1, "O ar quente sobe."],
+ ["A pressão positiva ajuda a...", ["Aumentar o ruído", "Reduzir a entrada de poeira", "Economizar energia", "Aumentar o FPS diretamente"], 1, "Com mais ar entrando pelos filtros, a poeira não entra pelas frestas."]
+],
+"18": [
+ ["O que define quais processadores uma placa-mãe aceita?", ["A cor", "O soquete (e o chipset e a BIOS)", "O número de USBs", "O tamanho do gabinete"], 1, "Exemplo: AM5 para Ryzen 7000/9000."],
+ ["Vídeo onboard hoje é fornecido, na prática, por...", ["Um chip de vídeo da placa-mãe", "O processador (iGPU)", "A fonte", "A memória"], 1, "CPUs com final F (Intel) não têm vídeo integrado."],
+ ["Qual é o formato de placa-mãe com 170 × 170 mm?", ["ATX", "Micro-ATX", "Mini-ITX", "E-ATX"], 2, "Mini-ITX: 2 slots de RAM e 1 slot PCIe."]
+],
+"19": [
+ ["O sufixo \"F\" num Intel Core (ex.: i5-14400F) indica...", ["Mais rápido", "Sem gráfico integrado", "Para notebooks", "Overclock liberado"], 1, "Ele precisa de placa de vídeo dedicada para dar imagem."],
+ ["O que significa X3D nos Ryzen?", ["3 núcleos extras", "Cache 3D V-Cache empilhado, ótimo para jogos", "Suporte a 3 monitores", "Overclock triplo"], 1, "O 9800X3D tem 96 MB de L3."],
+ ["Do que é feito o die do processador?", ["Cobre", "Silício", "Ouro", "Alumínio"], 1, "Silício ultrapuro, vindo da areia de quartzo."]
+],
+"20": [
+ ["Qual é a função da pasta térmica?", ["Colar o cooler", "Preencher as imperfeições entre a CPU e o dissipador, tirando o ar", "Conduzir eletricidade", "Lubrificar a ventoinha"], 1, "O ar é um péssimo condutor de calor."],
+ ["Qual metal conduz melhor o calor?", ["Alumínio", "Cobre", "Aço", "Plástico"], 1, "Cobre ≈ 400 W/m·K; alumínio ≈ 205–237 W/m·K."],
+ ["Como funciona um heatpipe?", ["Com um motor interno", "Um líquido evapora na ponta quente e condensa na fria", "Com gelo", "Por eletricidade"], 1, "Ele transporta muito calor por mudança de fase."]
+],
+"21": [
+ ["Um conector de ventoinha de 4 pinos permite controle por...", ["DC", "PWM", "USB", "SATA"], 1, "PWM permite controle preciso e rotações baixas."],
+ ["Num water cooler AIO, a bomba não deve ficar...", ["No ponto mais alto do circuito", "Perto da CPU", "Ligada", "Fria"], 0, "O ar acumula no ponto mais alto, o que gera barulho e desgaste."],
+ ["Como saber o sentido do ar de uma ventoinha?", ["Pela cor", "Pela seta na lateral da moldura", "Pelo tamanho", "Pelo cabo"], 1, "O ar sai pelo lado das hastes do motor."]
+],
+"22": [
+ ["A memória RAM é...", ["Permanente", "Volátil: perde os dados ao desligar", "Somente leitura", "Magnética"], 1, "É a mesa de trabalho do computador."],
+ ["DDR4 encaixa numa placa DDR5?", ["Sim", "Não: o chanfro fica em posição diferente", "Só com adaptador", "Só em notebook"], 1, "As gerações não são compatíveis."],
+ ["Por que ativar o XMP/EXPO?", ["Para a memória funcionar na velocidade anunciada", "Para gastar menos energia", "Para ligar o RGB", "Para instalar o Windows"], 0, "Sem o perfil ativado, ela roda na velocidade JEDEC padrão, mais baixa."]
+],
+"23": [
+ ["A diferença básica entre CPU e GPU é que a GPU tem...", ["Poucos núcleos fortes", "Milhares de núcleos para tarefas paralelas", "Nenhum núcleo", "Mais memória RAM do sistema"], 1, "Ideal para gráficos e IA."],
+ ["Para gerar imagens com IA localmente, o fator mais importante da GPU é...", ["A cor", "A quantidade de VRAM", "O RGB", "O número de ventoinhas"], 1, "O modelo precisa caber na memória de vídeo."],
+ ["Em \"GeForce RTX 5070 Ti\", o \"50\" indica...", ["A potência", "A geração (série 50, Blackwell)", "A VRAM", "O preço"], 1, "O \"70\" indica a posição na linha."]
+],
+"24": [
+ ["Uma fibra de 600 Mbps chegando a só ≈ 94 Mbps no PC indica, em geral...", ["Problema no provedor", "Link Fast Ethernet: cabo, porta ou placa de 100 Mbps", "Vírus", "Wi-Fi 7"], 1, "O teto real do Fast Ethernet é ≈ 94 Mbps."],
+ ["O endereço MAC é...", ["O endereço do site", "O identificador físico da placa de rede (48 bits)", "A senha do Wi-Fi", "O IP público"], 1, "O IP muda conforme a rede; o MAC é da placa."],
+ ["Qual banda de Wi-Fi tem maior alcance?", ["2,4 GHz", "5 GHz", "6 GHz", "Todas iguais"], 0, "A banda de 2,4 GHz atravessa melhor as paredes, mas é mais lenta e congestionada."]
+],
+"25": [
+ ["O que a fonte faz?", ["Converte CA da tomada em CC de 12, 5 e 3,3 V", "Esfria a CPU", "Guarda dados", "Gera imagem"], 0, "Ela também protege contra curto, sobretensão etc."],
+ ["Qual é a margem recomendada sobre o consumo do PC?", ["0%", "30–50%", "200%", "10 W"], 1, "A fonte é mais eficiente e silenciosa entre 40% e 70% de carga."],
+ ["Pode-se usar cabos modulares de outra fonte?", ["Sim, são padrão", "Não: a pinagem do lado da fonte varia e pode queimar as peças", "Só da mesma cor", "Só em 220 V"], 1, "Este é um dos piores erros de bancada."]
+],
+"26": [
+ ["Para 4K a 120 Hz numa TV, o cabo HDMI deve ser...", ["1.4", "2.0", "2.1 (Ultra High Speed)", "Qualquer um"], 2, "O HDMI 2.1 tem 48 Gb/s."],
+ ["Um cabo USB-C sempre transfere dados a 40 Gbps?", ["Sim", "Não: USB-C é só o formato; a capacidade varia", "Só os brancos", "Só no celular"], 1, "Há cabos USB-C só de carga, de USB 2.0, de 10 Gbps, de USB4..."],
+ ["Qual é a distância máxima de um cabo de rede de par trançado?", ["10 m", "100 m", "1 km", "Ilimitada"], 1, "O padrão Ethernet define 100 m."]
+],
+"27": [
+ ["Por que o HD é mais lento que o SSD?", ["Tem menos memória", "Tem partes móveis: o prato gira e o braço se move", "Usa cabo SATA", "É mais antigo"], 1, "O tempo de acesso do HD é de ≈ 5–15 ms, contra ≈ 0,05 ms do SSD."],
+ ["Um HD fazendo \"cliques\" repetidos deve...", ["Ser formatado", "Ser desligado; fazer backup ou recuperação profissional", "Levar um tapa", "Ser desfragmentado"], 1, "Insistir pode riscar os pratos."],
+ ["Qual ferramenta mostra a saúde (SMART) do disco?", ["CPU-Z", "CrystalDiskInfo", "Paint", "GPU-Z"], 1, "Atenção ao status \"Cuidado\"."]
+],
+"28": [
+ ["Qual SSD costuma ser mais rápido?", ["SATA", "NVMe PCIe 4.0", "IDE", "HD externo"], 1, "≈ 7.000 MB/s contra ≈ 550 MB/s do SATA."],
+ ["Deve-se desfragmentar o SSD?", ["Sim, toda semana", "Não: o sistema faz TRIM automaticamente", "Só uma vez por ano", "Sim, para ganhar espaço"], 1, "Desfragmentar não ajuda e gasta ciclos de escrita."],
+ ["Qual tipo de célula flash é o mais comum hoje?", ["SLC", "TLC", "PLC", "ROM"], 1, "TLC guarda 3 bits por célula."]
+],
+"29": [
+ ["Por qual peça se começa a planejar a compatibilidade?", ["Gabinete", "Processador e placa-mãe", "Mouse", "Monitor"], 1, "O soquete e o chipset definem quase todo o resto."],
+ ["Que ferramenta online alerta incompatibilidades automaticamente?", ["PCPartPicker", "Paint", "Google Tradutor", "Excel"], 0, "Ele confere soquete, tamanho e potência."],
+ ["Ao montar, quando se deve testar o PC fora do gabinete?", ["Nunca", "Antes de instalar a placa-mãe no gabinete", "Depois de instalar o Windows", "Só se der problema"], 1, "Isso evita desmontar tudo se algo falhar."]
+],
+"30": [
+ ["Limpar a poeira a cada 6 meses é manutenção...", ["Corretiva", "Preventiva", "Preditiva", "Emergencial"], 1, "É feita antes do problema."],
+ ["Trocar o HD porque o SMART indica setores realocados é manutenção...", ["Preditiva", "Corretiva", "Estética", "Nenhuma"], 0, "Ela se baseia em indicadores, antes da falha."],
+ ["O que fazer com as ventoinhas ao usar ar comprimido?", ["Deixá-las girar livremente", "Travar as pás", "Tirar o cabo", "Molhar"], 1, "Girando livre em alta rotação, o motor pode se danificar."]
+],
+"31": [
+ ["Qual é a medida mais útil para comparar baterias de notebook?", ["mAh", "Wh", "Volts", "rpm"], 1, "Wh é a energia total."],
+ ["O que fazer com uma bateria estufada?", ["Continuar usando", "Parar de usar e de carregar e levar para troca", "Furar para esvaziar", "Colocar na geladeira"], 1, "Há risco de incêndio."],
+ ["Em geral, o que dá para fazer upgrade num notebook moderno?", ["Processador", "SSD (e a RAM, se for SO-DIMM)", "GPU", "Tela por software"], 1, "CPU e GPU são soldadas."]
+],
+"32": [
+ ["O que é um qubit?", ["Um bit mais rápido", "Um bit quântico, que pode estar em superposição de 0 e 1", "Um tipo de cabo", "Um byte de 16 bits"], 1, "A medição o faz colapsar em 0 ou 1."],
+ ["Qual algoritmo quântico ameaça a criptografia RSA?", ["Grover", "Shor", "Dijkstra", "Bubble sort"], 1, "Peter Shor, 1994."],
+ ["O computador quântico vai substituir o seu PC?", ["Sim, em 2027", "Não: é um acelerador para problemas específicos", "Só para jogos", "Já substituiu"], 1, "Ele deve trabalhar ao lado dos computadores clássicos, pela nuvem."]
+],
+"33": [
+ ["Por que a GPU é tão boa para IA?", ["Porque tem RGB", "Redes neurais são multiplicações de matrizes, paralelas como os gráficos", "Porque é mais barata", "Porque usa menos energia que tudo"], 1, "Milhares de núcleos e Tensor Cores."],
+ ["O que é uma NPU?", ["Um tipo de fonte", "Um acelerador de IA de baixo consumo dentro do processador", "Uma memória", "Um cabo"], 1, "Os Copilot+ PCs exigem 40+ TOPS."],
+ ["Por que a RAM ficou mais cara em 2025–2026?", ["Imposto novo", "Os fabricantes desviaram a produção para HBM e memória de servidor dos data centers de IA", "Falta de silício na areia", "Moda do RGB"], 1, "A TrendForce previu +58–63% na DRAM só no 2º trimestre de 2026."]
+]
+}

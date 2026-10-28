@@ -1,0 +1,6 @@
+saida/
+entrega/
+*.zip
+research_notes/
+reports/
+__pycache__/

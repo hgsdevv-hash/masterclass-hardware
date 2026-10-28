@@ -1,0 +1,93 @@
+<header class="mod-h"><p class="mod-parte">Laboratório</p><h1>Ferramentas interativas</h1></header>
+<p>Refaça as contas da masterclass com os seus próprios números. Tudo funciona direto no navegador, sem internet.</p>
+<div class="ferr-grid">
+
+<section class="ferr" id="f-unid">
+<h2>Conversor de unidades</h2>
+<p>Bits, bytes, decimal (SI) e binário (IEC), lado a lado.</p>
+<div class="linha2">
+<label class="campo"><span>Valor</span><input id="u-v" type="number" value="1" min="0" step="any" inputmode="decimal"></label>
+<label class="campo"><span>Unidade</span><select id="u-u">
+<option value="0.125">bit</option><option value="1">byte (B)</option>
+<option value="1e3">KB (1.000)</option><option value="1e6">MB (1.000²)</option><option value="1e9">GB (1.000³)</option><option value="1e12" selected>TB (1.000⁴)</option>
+<option value="1024">KiB (1.024)</option><option value="1048576">MiB</option><option value="1073741824">GiB</option><option value="1099511627776">TiB</option>
+</select></label>
+</div>
+<div class="res" id="u-r"></div>
+</section>
+
+<section class="ferr" id="f-down">
+<h2>Tempo de download</h2>
+<p>Lembre: o plano é em megabits (Mbps); o arquivo, em bytes.</p>
+<div class="linha2">
+<label class="campo"><span>Tamanho do arquivo (GB)</span><input id="d-g" type="number" value="100" min="0" step="any" inputmode="decimal"></label>
+<label class="campo"><span>Plano (Mbps)</span><input id="d-m" type="number" value="500" min="1" step="any" inputmode="decimal"></label>
+</div>
+<label class="campo"><span>Eficiência real da conexão (%)</span><input id="d-e" type="number" value="90" min="10" max="100"></label>
+<div class="res" id="d-r"></div>
+</section>
+
+<section class="ferr" id="f-ohm">
+<h2>Lei de Ohm e potência</h2>
+<p>Preencha dois valores quaisquer e deixe os outros em branco.</p>
+<div class="linha2">
+<label class="campo"><span>Tensão V (volts)</span><input id="o-v" type="number" step="any" value="127" inputmode="decimal"></label>
+<label class="campo"><span>Corrente I (ampères)</span><input id="o-i" type="number" step="any" inputmode="decimal"></label>
+<label class="campo"><span>Resistência R (ohms)</span><input id="o-r" type="number" step="any" inputmode="decimal"></label>
+<label class="campo"><span>Potência P (watts)</span><input id="o-p" type="number" step="any" value="500" inputmode="decimal"></label>
+</div>
+<div class="res" id="o-res"></div>
+</section>
+
+<section class="ferr" id="f-energia">
+<h2>Custo de energia do PC</h2>
+<p>kWh = kW × horas. A tarifa padrão é a referência de out/2026 com impostos.</p>
+<div class="linha2">
+<label class="campo"><span>Consumo médio (W)</span><input id="e-w" type="number" value="400" min="0" inputmode="decimal"></label>
+<label class="campo"><span>Horas por dia</span><input id="e-h" type="number" value="4" min="0" max="24" step="any" inputmode="decimal"></label>
+<label class="campo"><span>Dias por mês</span><input id="e-d" type="number" value="30" min="0" max="31"></label>
+<label class="campo"><span>Tarifa (R$/kWh)</span><input id="e-t" type="number" value="1.00" min="0" step="0.01" inputmode="decimal"></label>
+</div>
+<div class="res" id="e-r"></div>
+</section>
+
+<section class="ferr" id="f-fonte">
+<h2>Calculadora de fonte</h2>
+<p>Some o consumo das peças e aplique a margem de segurança.</p>
+<div class="linha2">
+<label class="campo"><span>CPU, potência máxima (W)</span><input id="p-c" type="number" value="88" min="0"></label>
+<label class="campo"><span>GPU, TGP (W)</span><input id="p-g" type="number" value="250" min="0"></label>
+<label class="campo"><span>Restante do sistema (W)</span><input id="p-o" type="number" value="75" min="0"></label>
+<label class="campo"><span>Margem (%)</span><input id="p-m" type="number" value="40" min="0" max="100"></label>
+</div>
+<div class="res" id="p-r"></div>
+</section>
+
+<section class="ferr" id="f-base">
+<h2>Decimal, binário e hexadecimal</h2>
+<p>Digite em qualquer campo; os outros se atualizam.</p>
+<label class="campo"><span>Decimal</span><input id="b-d" type="text" value="65" inputmode="numeric" autocomplete="off"></label>
+<label class="campo"><span>Binário</span><input id="b-b" type="text" autocomplete="off"></label>
+<label class="campo"><span>Hexadecimal</span><input id="b-h" type="text" autocomplete="off"></label>
+<div class="res" id="b-r"></div>
+</section>
+
+<section class="ferr" id="f-hd">
+<h2>"Meu HD encolheu?"</h2>
+<p>Quanto o Windows mostra para a capacidade anunciada.</p>
+<div class="linha2">
+<label class="campo"><span>Capacidade anunciada</span><input id="h-v" type="number" value="1" min="0" step="any" inputmode="decimal"></label>
+<label class="campo"><span>Unidade</span><select id="h-u"><option value="1e9">GB</option><option value="1e12" selected>TB</option></select></label>
+</div>
+<div class="res" id="h-r"></div>
+</section>
+
+<section class="ferr" id="f-atalho">
+<h2>Treino de atalhos</h2>
+<p>Escolha o atalho certo para cada ação. Dez perguntas por rodada.</p>
+<p class="atalho-q" id="a-q"></p>
+<div class="ops" id="a-ops"></div>
+<p class="atalho-p" id="a-p"></p>
+</section>
+
+</div>
